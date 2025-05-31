@@ -14,94 +14,42 @@
       </tr>
     </thead>
     <tbody>
-      <!-- row 1 -->
+      <!-- Maximo de 7 y minimo 3 -->
       <tr>
         <th>1</th>
         <td>Juna</td>
         <td>$100.000</td>
-        <td>
-            <button class="btn btn-outline btn-primary">Primary</button>
-        </td>
-        <td>
-            <button class="btn btn-outline btn-success">Success</button>
-        </td>
-      </tr>
-
-      <tr>
-        <th>1</th>
-        <td>Juna</td>
-        <td>$100.000</td>
-        <td>
+        
+        @if (typeRoute() != 'loans') {
+          <td>
             <button class="btn btn-outline btn-primary">Mas</button>
-        </td>
-        <td>
+          </td>
+          <td>
             <button class="btn btn-outline btn-success">Pagar</button>
-        </td>
+          </td>
+
+        }@else if (typeRoute() === 'loans') {
+          <td>
+            <button class="btn btn-outline btn-success" [routerLink]="['/lonsEdit',123123123]" >Editar</button>
+          </td>
+          <td>
+            <button class="btn btn-outline btn-error">Eliminar</button>
+          </td>
+        }
+
+
+        
       </tr>
-
-
-      <tr>
-        <th>1</th>
-        <td>Juna</td>
-        <td>$100.000</td>
-        <td>
-            <button class="btn btn-outline btn-primary">Primary</button>
-        </td>
-        <td>
-            <button class="btn btn-outline btn-success">Success</button>
-        </td>
-      </tr>
-
-
-      <tr>
-        <th>1</th>
-        <td>Juna</td>
-        <td>$100.000</td>
-        <td>
-            <button class="btn btn-outline btn-primary">Primary</button>
-        </td>
-        <td>
-            <button class="btn btn-outline btn-success">Success</button>
-        </td>
-      </tr>
-
-
-      <tr>
-        <th>1</th>
-        <td>Juna</td>
-        <td>$100.000</td>
-        <td>
-            <button class="btn btn-outline btn-primary">Primary</button>
-        </td>
-        <td>
-            <button class="btn btn-outline btn-success">Success</button>
-        </td>
-      </tr>
-
-
-      <tr>
-        <th>1</th>
-        <td>Juna</td>
-        <td>$100.000</td>
-        <td>
-            <button class="btn btn-outline btn-primary">Primary</button>
-        </td>
-        <td>
-            <button class="btn btn-outline btn-success">Success</button>
-        </td>
-      </tr>
-
-
-  
-
-
-
+     
     </tbody>
 </table>
       
-  <div class="join  justify-center m-2.5">
+@if (typeRoute() != 'loans' ) {
+    <div class="join  justify-center m-2.5">
     <button class="join-item btn">«</button>
     <button class="join-item btn">Page 22</button>
     <button class="join-item btn">»</button>
   </div>
+}
+
 </div>

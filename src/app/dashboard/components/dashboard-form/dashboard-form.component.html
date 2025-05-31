@@ -1,0 +1,48 @@
+
+<div class="grid grid-cols-2 grid-rows-3 gap-5  w-96 m-6 bg-base-100 p-3 rounded-xl">
+ 
+  <div class="col-span-2">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Numero de Cedula</legend>
+      <input type="number" class="input" placeholder="Cedular" />
+   </fieldset>
+  </div>
+  <div class="row-start-2">
+      <fieldset class="fieldset">
+      <legend class="fieldset-legend">Nombre</legend>
+      <input type="text" class="input" placeholder="Nombre" />
+   </fieldset>
+  </div>
+
+  <div class="row-start-2">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Correo</legend>
+      <input type="text" class="input" placeholder="Correo" />
+   </fieldset>
+  </div>
+
+  <div class="row-start-3">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Monto a Prestar</legend>
+      <input type="number" class="input" placeholder="Monto a Prestar" />
+   </fieldset>
+  </div>
+  <div class="row-start-3">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Fecha de pago</legend>
+      <input type="date" class="input" />
+   </fieldset>
+  </div>
+
+  @if(!router.url.includes('lonsEdit')){
+    <button class="btn btn-info">Solicitar el prestamo</button>
+  }
+
+  @if(router.url.includes('lonsEdit')){
+    <button class="btn btn-success">Editar</button>
+    <button class="btn btn-error" routerLink="/lonsAgg"  >Cancelar</button>
+  }
+ 
+  
+</div>
+    
