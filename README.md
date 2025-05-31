@@ -10,6 +10,17 @@ To start a local development server, run:
 ng serve
 ```
 
-Instalaciones Encaso dado el diseno no funcione 
+Instalaciones
   ## tailwindcss.com   
   npm install daisyui@latest tailwindcss@latest @tailwindcss/postcss@latest postcss@latest --force
+
+  ## json-server - Node.js v22.14.0
+  npm install json-server
+
+
+## ejecutardores
+
+  json-server --watch db.json
+  ng-serve -o
+  
+
