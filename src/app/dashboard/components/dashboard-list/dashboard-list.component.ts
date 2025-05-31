@@ -18,8 +18,14 @@ export class DashboardListComponent {
   ismessangerError = input<string | undefined | unknown>()
   
   searchOutput = output<void>();
+  deleteOutput = output<string>();
+
   onSearch(x:any) {
     this.searchOutput.emit(x.target.value)
+  }
+
+  onDelete(x:string) {
+   this.deleteOutput.emit(x)
   }
 
 }

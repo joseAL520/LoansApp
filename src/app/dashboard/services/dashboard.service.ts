@@ -34,8 +34,8 @@ export class DashboardService {
     return this.httpClient.put<Client>(`${basUrl}`,id)
   }
 
-  deleteClients():Observable<Client>{
-    return this.httpClient.delete<Client>(`${basUrl}`)
+  deleteClients(id:string):Observable<Client>{
+    return this.httpClient.delete<Client>(`${basUrl}/${id}`)
   }
 
 }

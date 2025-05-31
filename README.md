@@ -9,13 +9,13 @@ To start a local development server, run:
 ```bash
 ng serve
 ```
-
-Instalaciones
+**Instalaciones**
   ## tailwindcss.com   
   npm install daisyui@latest tailwindcss@latest @tailwindcss/postcss@latest postcss@latest --force
-
   ## json-server - Node.js v22.14.0
   npm install json-server
+  ##  uuid 11.1.0
+  npm i uuid
 
 
 ## ejecutardores

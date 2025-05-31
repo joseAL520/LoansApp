@@ -33,20 +33,12 @@
       "payDate": "2025-06-30"
     },
     {
-      "id": "66cfc27f-e3e2-4619-9a01-6f0a583f1841",
-      "nit": 13123123123,
-      "fullName": "13123123123",
-      "email": "123123123@gmail.com",
-      "loans": 12312,
-      "payDate": "2025-06-07"
-    },
-    {
-      "id": "66cfc27f-e3e2-4619-9a01-6f0a583f1841",
-      "nit": 13123123123,
-      "fullName": "1232123123",
-      "email": "13123123@gmail.com",
-      "loans": 13123,
-      "payDate": "123123-12-13"
+      "id": "b7a82df3-76c1-42d6-b995-9b0d90f03963",
+      "nit": 1232123123,
+      "fullName": "1111111",
+      "email": "jose.albet@gmail.com",
+      "loans": 11230,
+      "payDate": ""
     }
   ],
   "admin": {

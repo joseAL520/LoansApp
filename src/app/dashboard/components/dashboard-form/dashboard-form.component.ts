@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import { min, switchMap } from 'rxjs';
+import { from, min, switchMap } from 'rxjs';
 import { FormUtils } from '../../utils/form-utils';
-import { DashboardService } from '../../services/dashboard.service';
+import { v4 as uuidv4 } from 'uuid';
+
 
 @Component({
   selector: 'app-dashboard-form',
@@ -13,27 +14,29 @@ import { DashboardService } from '../../services/dashboard.service';
 })
 export class DashboardFormComponent  { 
 
-  dashboardService = inject(DashboardService)
+ 
   router = inject(Router)   
   activateRouter= inject(ActivatedRoute)
   public id: any;
   private fb  = inject(FormBuilder)
 
   myForm = this.fb.group({
-    id:['66cfc27f-e3e2-4619-9a01-6f0a583f1841'],
-    nit:[,[Validators.required, Validators.min(5)]],
+    id:[uuidv4()],
+    nit:[0,[Validators.required, Validators.min(5)]],
     fullName:['',[Validators.required, Validators.minLength(7)]],
     email:['',[Validators.required, Validators.email]],
-    loans:[,[Validators.required, Validators.min(10000),Validators.max(100000)]],
-    payDate: ['']
+    loans:[0,[Validators.required, Validators.min(10000),Validators.max(100000)]],
+    payDate:['']
   })
-  formUtils= FormUtils;
-  
+  formUtils= FormUtils; //
+  formOutput = output<any>();
+
   onSubmit(){
    this.myForm.markAllAsTouched();
    if(!this.myForm.valid)return
+
     const newClient = this.myForm.value
-    this.dashboardService.postClients(newClient).subscribe()
+    this.formOutput.emit(newClient)
     this.myForm.reset()
   }
   

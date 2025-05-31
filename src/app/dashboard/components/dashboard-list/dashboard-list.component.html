@@ -34,7 +34,7 @@
             <button class="btn btn-outline btn-success" [routerLink]="['/lonsEdit',item.id]" >Editar</button>
           </td>
           <td>
-            <button class="btn btn-outline btn-error">Eliminar</button>
+            <button class="btn btn-outline btn-error" (click)="onDelete(item.id)">Eliminar</button>
           </td>
         }
 
