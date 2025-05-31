@@ -1,44 +1,24 @@
 {
   "clients": [
-    {
-      "id": "1",
-      "nit": 123456789,
-      "fullName": "Juan Pérez",
-      "email": "juan.perez@example.com",
-      "loans": 5000,
-      "payDate": "2025-06-15"
-    },
-    {
-      "id": "2",
-      "nit": 987654321,
-      "fullName": "María Rodríguez",
-      "email": "maria.rodriguez@example.com",
-      "loans": 3000,
-      "payDate": "2025-07-01"
-    },
-    {
-      "id": "3",
-      "nit": 456789123,
-      "fullName": "Carlos López",
-      "email": "carlos.lopez@example.com",
-      "loans": 8000,
-      "payDate": "2025-06-30"
-    },
-    {
-      "id": "4",
-      "nit": 112233445,
-      "fullName": "Ana Martínez",
-      "email": "ana.martinez@example.com",
-      "loans": 2500,
-      "payDate": "2025-07-10"
-    },
-    {
-      "id": "5",
-      "nit": 998877665,
-      "fullName": "Luis Gómez",
-      "email": "luis.gomez@example.com",
-      "loans": 6200,
-      "payDate": "2025-06-25"
-    }
+    {"id":"1", "nit": 123456789, "fullName": "Juan Pérez", "email": "juan.perez@example.com", "loans": 5000, "payDate": "2025-06-15"},
+    {"id":"2", "nit": 987654321, "fullName": "María Rodríguez", "email": "maria.rodriguez@example.com", "loans": 3000, "payDate": "2025-07-01"},
+    {"id":"3", "nit": 456789123, "fullName": "Carlos López", "email": "carlos.lopez@example.com", "loans": 8000, "payDate": "2025-06-30"},
+    {"id":"4", "nit": 1123123123, "fullName": "Mario Couta", "email": "mario.couta@example.com", "loans": 8000, "payDate": "2025-06-30"},
+    {"id":"5", "nit": 213546879, "fullName": "Laura Martínez", "email": "laura.martinez@example.com", "loans": 4200, "payDate": "2025-07-05"},
+    {"id":"6", "nit": 987654123, "fullName": "Andrés Gómez", "email": "andres.gomez@example.com", "loans": 6100, "payDate": "2025-06-28"},
+    {"id":"7", "nit": 654987321, "fullName": "Sofía Hernández", "email": "sofia.hernandez@example.com", "loans": 2500, "payDate": "2025-07-10"},
+    {"id":"8", "nit": 321456987, "fullName": "Diego Ramírez", "email": "diego.ramirez@example.com", "loans": 9000, "payDate": "2025-06-20"},
+    {"id":"9", "nit": 741852963, "fullName": "Natalia Sánchez", "email": "natalia.sanchez@example.com", "loans": 7300, "payDate": "2025-07-12"},
+    {"id":"10", "nit": 852963741, "fullName": "Felipe Torres", "email": "felipe.torres@example.com", "loans": 4800, "payDate": "2025-07-02"},
+    {"id":"11", "nit": 963258741, "fullName": "Valeria Castro", "email": "valeria.castro@example.com", "loans": 3600, "payDate": "2025-07-08"},
+    {"id":"12", "nit": 159753486, "fullName": "Miguel Díaz", "email": "miguel.diaz@example.com", "loans": 5500, "payDate": "2025-06-25"},
+    {"id":"13", "nit": 357951456, "fullName": "Camila Vargas", "email": "camila.vargas@example.com", "loans": 6700, "payDate": "2025-07-03"},
+    {"id":"14", "nit": 258369147, "fullName": "Jorge Herrera", "email": "jorge.herrera@example.com", "loans": 7800, "payDate": "2025-07-06"},
+    {"id":"15", "nit": 654123789, "fullName": "Elena Ruiz", "email": "elena.ruiz@example.com", "loans": 3900, "payDate": "2025-06-22"},
+    {"id":"16", "nit": 789456123, "fullName": "Pablo Morales", "email": "pablo.morales@example.com", "loans": 8200, "payDate": "2025-07-11"},
+    {"id":"17", "nit": 147258369, "fullName": "Isabel Medina", "email": "isabel.medina@example.com", "loans": 4400, "payDate": "2025-07-04"},
+    {"id":"18", "nit": 963147852, "fullName": "Ricardo Jiménez", "email": "ricardo.jimenez@example.com", "loans": 6000, "payDate": "2025-06-27"},
+    {"id":"19", "nit": 321654987, "fullName": "Ana López", "email": "ana.lopez@example.com", "loans": 7100, "payDate": "2025-07-09"},
+    {"id":"20", "nit": 741963852, "fullName": "Santiago Cruz", "email": "santiago.cruz@example.com", "loans": 5300, "payDate": "2025-07-07"}
   ]
 }

@@ -13,12 +13,12 @@ export class DashboardService {
   private httpClient = inject(HttpClient)
 
 
-  getClients():Observable<Client>{
+  getClients(limit: number, offset: number = 0):Observable<Client[]>{
 
-    return this.httpClient.get<Client>(`${basUrl}clients`,{
+    return this.httpClient.get<Client[]>(`${basUrl}clients`,{
       params:{
-        _page:2,
-        _limit:3
+        _limit:limit,
+        _start:offset
       }
     }).pipe(
       tap( (valu) => console.log(valu) )

@@ -1,2 +1,11 @@
-<app-dashboar-cards></app-dashboar-cards>
-<app-dashboard-list></app-dashboard-list>
+<app-dashboar-cards></app-dashboar-cards> 
+
+<div class="flex flex-col">
+  <app-dashboard-list  [clients]="clietnsResource.value()" ></app-dashboard-list>
+  <div class="join  justify-center mb-12">
+  <button class="join-item btn" (click)="prevPage()" [disabled]="disablePrev()">«</button>
+  <button class="join-item btn">Page {{ currentPage() + 1 }}</button>
+  <button class="join-item btn" (click)="nextPage()" [disabled]="disableNext()">»</button>
+
+  </div>
+</div>
