@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import { min, switchMap } from 'rxjs';
 import { FormUtils } from '../../utils/form-utils';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard-form',
@@ -11,13 +12,15 @@ import { FormUtils } from '../../utils/form-utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardFormComponent  { 
+
+  dashboardService = inject(DashboardService)
   router = inject(Router)   
   activateRouter= inject(ActivatedRoute)
   public id: any;
-
   private fb  = inject(FormBuilder)
 
   myForm = this.fb.group({
+    id:['66cfc27f-e3e2-4619-9a01-6f0a583f1841'],
     nit:[,[Validators.required, Validators.min(5)]],
     fullName:['',[Validators.required, Validators.minLength(7)]],
     email:['',[Validators.required, Validators.email]],
@@ -28,7 +31,10 @@ export class DashboardFormComponent  {
   
   onSubmit(){
    this.myForm.markAllAsTouched();
-    console.log(this.myForm.value);
+   if(!this.myForm.valid)return
+    const newClient = this.myForm.value
+    this.dashboardService.postClients(newClient).subscribe()
+    this.myForm.reset()
   }
   
 

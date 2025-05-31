@@ -3,6 +3,7 @@ import { DashboarCardsComponent } from "../../components/dashboar-cards/dashboar
 import { DashboardListComponent } from "../../components/dashboard-list/dashboard-list.component";
 import { DashboardService } from '../../services/dashboard.service';
 import { firstValueFrom } from 'rxjs';
+import { Client } from '../../interfaces/clients.interfaces';
 
 @Component({
   selector: 'app-dashboar-page',
@@ -12,9 +13,9 @@ import { firstValueFrom } from 'rxjs';
 })
 export class DashboarPageComponent  {
 
+  searchedClients?: Client[]| null = null;
+
   clientService = inject(DashboardService)
-
-
   limit = 7;
   currentPage = signal(0);
   lastLoadCount = signal(0);
@@ -23,18 +24,35 @@ export class DashboarPageComponent  {
   readonly disablePrev = computed(() => this.currentPage() === 0);
   readonly disableNext = computed(() => this.lastLoadCount() < this.limit);
 
- clietnsResource = resource({
-  request: () => this.offset(),
-  loader: async ({ request: offset }) => {
-    const clients = await firstValueFrom(
-      this.clientService.getClients(this.limit, offset)
-    );
-    this.lastLoadCount.set(clients.length);
-    return clients;
-  }
-})
+  // get
+  clientsResource = resource({
+    request: () => this.offset(),
+    loader: async ({ request: offset }) => {
+      const clients = await firstValueFrom(
+        this.clientService.getClients(this.limit, offset)
+      );
+      this.lastLoadCount.set(clients.length);
+      return clients;
+    }
+  })
 
-  
+  //getById
+ clietnSearchBy(event: any) {
+  const id = Number(event);
+  if (!id) {
+    this.searchedClients = null; 
+    return;
+  }
+  this.clientService.getClientsById(id).subscribe({
+    next: (clients) => {
+      this.searchedClients = clients;
+    },
+    error: () => {
+      this.searchedClients = null;
+    }
+  });
+
+}
 
   nextPage() {
     if (this.lastLoadCount() === this.limit) {

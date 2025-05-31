@@ -1,6 +1,6 @@
 <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 m-6 flex flex-col ">
 
-   <input type="text" placeholder="Buscar X Cc" class="input m-2.5" />
+  <input type="number" placeholder="Buscar X Cc" class="input m-2.5"   (keyup)="onSearch($event)"/>
 
   <table class="table">
     <!-- head -->
@@ -16,7 +16,6 @@
     <tbody>
 
     @for (item of clients();  track item.id; let index = $index; ) {
-
       <tr>
         <th>{{index + 1}}</th>
         <td>{{item.fullName}}</td>

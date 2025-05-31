@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrlClient: 'http://localhost:3000/'
+    baseUrlClient: 'http://localhost:3000/clients'
 };

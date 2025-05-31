@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Client } from '../../interfaces/clients.interfaces';
 
@@ -17,6 +17,9 @@ export class DashboardListComponent {
   isLoading = input<boolean>(false)
   ismessangerError = input<string | undefined | unknown>()
   
-  
+  searchOutput = output<void>();
+  onSearch(x:any) {
+    this.searchOutput.emit(x.target.value)
+  }
 
 }
