@@ -1,18 +1,36 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { switchMap } from 'rxjs';
+import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import { min, switchMap } from 'rxjs';
+import { FormUtils } from '../../utils/form-utils';
 
 @Component({
   selector: 'app-dashboard-form',
-  imports: [RouterLink],
+  imports: [RouterLink,ReactiveFormsModule,],
   templateUrl: './dashboard-form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardFormComponent  { 
-
   router = inject(Router)   
   activateRouter= inject(ActivatedRoute)
   public id: any;
+
+  private fb  = inject(FormBuilder)
+
+  myForm = this.fb.group({
+    nit:[,[Validators.required, Validators.min(5)]],
+    fullName:['',[Validators.required, Validators.minLength(7)]],
+    email:['',[Validators.required, Validators.email]],
+    loans:[,[Validators.required, Validators.min(10000),Validators.max(100000)]],
+    payDate: ['']
+  })
+  formUtils= FormUtils;
+  
+  onSubmit(){
+   this.myForm.markAllAsTouched();
+    console.log(this.myForm.value);
+  }
+  
 
   ngOnInit(): void {
 
