@@ -1,48 +1,49 @@
-<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 m-6 flex flex-col ">
+<div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 m-4 sm:m-6 flex flex-col">
 
-  <input type="number" placeholder="Buscar X Cc" class="input m-2.5"   (keyup)="onSearch($event)"/>
+  <input
+    type="number"
+    placeholder="Buscar X Cc"
+    class="input input-sm sm:input-md m-2.5 w-full max-w-xs"
+    (keyup)="onSearch($event)"
+  />
 
-  <table class="table">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th></th>
-        <th>Nombre</th>
-        <th>Monto</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="w-full overflow-x-auto">
+    <table class="table table-zebra">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Monto</th>
+          <th colspan="2" class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of clients(); track item.id; let index = $index;) {
+          <tr>
+            <th>{{ index + 1 }}</th>
+            <td>{{ item.fullName }}</td>
+            <td>{{ item.loans }}</td>
 
-    @for (item of clients();  track item.id; let index = $index; ) {
-      <tr>
-        <th>{{index + 1}}</th>
-        <td>{{item.fullName}}</td>
-        <td>{{item.loans}}</td>
-        
-        @if (typeRoute() != 'loans') {
-          <td>
-            <button class="btn btn-outline btn-primary">Mas</button>
-          </td>
-          <td>
-            <button class="btn btn-outline btn-success">Pagar</button>
-          </td>
+            @if (typeRoute() != 'loans') {
+              <td>
+                <button class="btn btn-sm btn-outline btn-primary w-full sm:w-auto">Más</button>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline btn-success w-full sm:w-auto">Pagar</button>
+              </td>
+            } @else if (typeRoute() === 'loans') {
+              <td>
+                <button class="btn btn-sm btn-outline btn-success w-full sm:w-auto" [routerLink]="['/lonsEdit', item.id]">Editar</button>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-outline btn-error w-full sm:w-auto" (click)="onDelete(item.id)">Eliminar</button>
+              </td>
+            }
 
-        }@else if (typeRoute() === 'loans') {
-          <td>
-            <button class="btn btn-outline btn-success" [routerLink]="['/lonsEdit',item.id]" >Editar</button>
-          </td>
-          <td>
-            <button class="btn btn-outline btn-error" (click)="onDelete(item.id)">Eliminar</button>
-          </td>
+          </tr>
         }
-
-      </tr>
-   
-    }
-    </tbody>
-</table>
-      
-
+      </tbody>
+    </table>
+  </div>
 </div>
