@@ -1,13 +1,20 @@
 <app-dashboar-cards></app-dashboar-cards>
 
-<div class="flex bg-base-300 m-6 justify-between rounded-xl ">
-    <app-dashboard-form (formOutput)="postClient($event)" ></app-dashboard-form>
-    <div class="divider divider-horizontal">.</div>
-  <app-dashboard-list 
-    typeRoute="loans" 
-    [clients]="searchedClients ? searchedClients : clientsResource.value()" 
-    (searchOutput)="clietnSearchBy($event)"
-    (deleteOutput)="clietnDeleteBy($event)"
-    ></app-dashboard-list>
-</div>
+<div class="flex flex-col lg:flex-row bg-base-300 m-6 p-4 gap-6 rounded-xl">
 
+  <div class="w-full lg:w-1/2">
+    <app-dashboard-form (formOutput)="postClient($event)"></app-dashboard-form>
+  </div>
+
+  <div class="divider divider-horizontal hidden lg:flex">.</div>
+
+  <div class="w-full lg:w-1/2">
+    <app-dashboard-list 
+      typeRoute="loans" 
+      [clients]="searchedClients ? searchedClients : clientsResource.value()" 
+      (searchOutput)="clietnSearchBy($event)"
+      (deleteOutput)="clietnDeleteBy($event)">
+    </app-dashboard-list>
+  </div>
+  
+</div>
