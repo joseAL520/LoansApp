@@ -3,7 +3,7 @@
   [formGroup]="myForm"
   (submit)="onSubmit()"
 >
-  <!-- Cedula -->
+
   <div class="sm:col-span-2">
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Número de Cédula</legend>
@@ -21,7 +21,6 @@
     </fieldset>
   </div>
 
-  <!-- Nombre -->
   <div>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Nombre</legend>
@@ -39,7 +38,7 @@
     </fieldset>
   </div>
 
-  <!-- Correo -->
+
   <div>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Correo</legend>
@@ -57,7 +56,7 @@
     </fieldset>
   </div>
 
-  <!-- Monto a Prestar -->
+
   <div>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Monto a Prestar</legend>
@@ -75,7 +74,7 @@
     </fieldset>
   </div>
 
-  <!-- Fecha de pago -->
+
   <div>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Fecha de pago</legend>
@@ -88,7 +87,6 @@
     </fieldset>
   </div>
 
-  <!-- Botones -->
   <div class="sm:col-span-2 flex flex-col sm:flex-row gap-3 justify-end mt-2">
     @if (!router.url.includes('lonsEdit')) {
       <button class="btn btn-info w-full sm:w-auto" type="submit">

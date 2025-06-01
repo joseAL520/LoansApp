@@ -1,18 +1,13 @@
-<!-- Tarjetas del dashboard -->
 <app-dashboar-cards></app-dashboar-cards>
 
-<!-- Contenedor general responsive -->
 <div class="flex flex-col lg:flex-row bg-base-300 m-6 p-4 gap-6 rounded-xl">
 
-  <!-- Formulario -->
   <div class="w-full lg:w-1/2">
     <app-dashboard-form (formOutput)="postClient($event)"></app-dashboard-form>
   </div>
 
-  <!-- Divider horizontal solo visible en pantallas grandes -->
   <div class="divider divider-horizontal hidden lg:flex">.</div>
 
-  <!-- Lista -->
   <div class="w-full lg:w-1/2">
     <app-dashboard-list 
       typeRoute="loans" 
