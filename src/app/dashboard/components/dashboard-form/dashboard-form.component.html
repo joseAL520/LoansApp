@@ -1,101 +1,108 @@
-
-<form class="grid grid-cols-2 grid-rows-3 gap-5  w-96 m-6 bg-base-100 p-3 rounded-xl"
-      [formGroup]="myForm"
-      (submit)="onSubmit()">
-  <div class="col-span-2">
+<form
+  class="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full max-w-xl m-6 bg-base-100 p-5 rounded-xl shadow-md"
+  [formGroup]="myForm"
+  (submit)="onSubmit()"
+>
+  <!-- Cedula -->
+  <div class="sm:col-span-2">
     <fieldset class="fieldset">
-      <legend class="fieldset-legend">Numero de Cedula</legend>
-      <input 
-        type="number" 
-        class="input" 
-        placeholder="Cedula"
-        formControlName="nit" 
+      <legend class="fieldset-legend">Número de Cédula</legend>
+      <input
+        type="number"
+        class="input w-full"
+        placeholder="Cédula"
+        formControlName="nit"
       />
-     @if ( formUtils.isValidField(myForm, 'nit')) {
-      <span class="form-text text-error">
-        {{ formUtils.getFieldError(myForm, "nit") }}
-      </span>
-  }
-   </fieldset>
+      @if (formUtils.isValidField(myForm, 'nit')) {
+        <span class="form-text text-error">
+          {{ formUtils.getFieldError(myForm, 'nit') }}
+        </span>
+      }
+    </fieldset>
   </div>
 
-  <div class="row-start-2">
+  <!-- Nombre -->
+  <div>
     <fieldset class="fieldset">
-    <legend class="fieldset-legend">Nombre</legend>
-    <input 
-      type="text" 
-      class="input" 
-      placeholder="Nombre" 
-      formControlName="fullName"
-    />
-    @if ( formUtils.isValidField(myForm, 'fullName')) {
-      <span class="form-text text-error">
-        {{ formUtils.getFieldError(myForm, "fullName") }}
-      </span>
-    }
-   </fieldset>
-
-  
+      <legend class="fieldset-legend">Nombre</legend>
+      <input
+        type="text"
+        class="input w-full"
+        placeholder="Nombre"
+        formControlName="fullName"
+      />
+      @if (formUtils.isValidField(myForm, 'fullName')) {
+        <span class="form-text text-error">
+          {{ formUtils.getFieldError(myForm, 'fullName') }}
+        </span>
+      }
+    </fieldset>
   </div>
 
-  <div class="row-start-2">
+  <!-- Correo -->
+  <div>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Correo</legend>
-      <input 
-        type="text" 
-        class="input" 
+      <input
+        type="text"
+        class="input w-full"
         placeholder="Correo"
-        formControlName="email" 
+        formControlName="email"
       />
-
-      @if ( formUtils.isValidField(myForm, 'email')) {
-      <span class="form-text text-error">
-        {{ formUtils.getFieldError(myForm, "email") }}
-      </span>
-  }
-
-   </fieldset>
-    
+      @if (formUtils.isValidField(myForm, 'email')) {
+        <span class="form-text text-error">
+          {{ formUtils.getFieldError(myForm, 'email') }}
+        </span>
+      }
+    </fieldset>
   </div>
 
-  <div class="row-start-3">
+  <!-- Monto a Prestar -->
+  <div>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Monto a Prestar</legend>
-      <input 
-        type="number" 
-        class="input" 
-        placeholder="Monto a Prestar"
-        formControlName="loans" 
+      <input
+        type="number"
+        class="input w-full"
+        placeholder="Monto"
+        formControlName="loans"
       />
-      @if ( formUtils.isValidField(myForm, 'loans')) {
-      <span class="form-text text-error">
-        {{ formUtils.getFieldError(myForm, "loans") }}
-      </span>
-  }
-   </fieldset>
-   
+      @if (formUtils.isValidField(myForm, 'loans')) {
+        <span class="form-text text-error">
+          {{ formUtils.getFieldError(myForm, 'loans') }}
+        </span>
+      }
+    </fieldset>
   </div>
-  <div class="row-start-3">
+
+  <!-- Fecha de pago -->
+  <div>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Fecha de pago</legend>
-      <input 
-        type="date" 
-        class="input"
+      <input
+        type="date"
+        class="input w-full"
         formControlName="payDate"
       />
-      <label class="form-text text-gray-300">(Opcional)</label>
-   </fieldset>
+      <label class="form-text text-gray-400">(Opcional)</label>
+    </fieldset>
   </div>
 
-  @if(!router.url.includes('lonsEdit')){
-    <button class="btn btn-info" type="submit" >Solicitar el prestamo</button>
-  }
+  <!-- Botones -->
+  <div class="sm:col-span-2 flex flex-col sm:flex-row gap-3 justify-end mt-2">
+    @if (!router.url.includes('lonsEdit')) {
+      <button class="btn btn-info w-full sm:w-auto" type="submit">
+        Solicitar el préstamo
+      </button>
+    }
 
-  @if(router.url.includes('lonsEdit')){
-    <button class="btn btn-success" type="submit">Editar</button>
-    <button class="btn btn-error" routerLink="/lonsAgg"  >Cancelar</button>
-  }
- </form>
-  
-
-    
+    @if (router.url.includes('lonsEdit')) {
+      <button class="btn btn-success w-full sm:w-auto" type="submit">
+        Editar
+      </button>
+      <button class="btn btn-error w-full sm:w-auto" routerLink="/lonsAgg">
+        Cancelar
+      </button>
+    }
+  </div>
+</form>
