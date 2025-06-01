@@ -15,30 +15,6 @@
       "email": "maria.rodriguez@example.com",
       "loans": 3000,
       "payDate": "2025-07-01"
-    },
-    {
-      "id": "3",
-      "nit": 456789123,
-      "fullName": "Carlos López",
-      "email": "carlos.lopez@example.com",
-      "loans": 8000,
-      "payDate": "2025-06-30"
-    },
-    {
-      "id": "4",
-      "nit": 1123123123,
-      "fullName": "Mario Couta",
-      "email": "mario.couta@example.com",
-      "loans": 8000,
-      "payDate": "2025-06-30"
-    },
-    {
-      "id": "b7a82df3-76c1-42d6-b995-9b0d90f03963",
-      "nit": 1232123123,
-      "fullName": "1111111",
-      "email": "jose.albet@gmail.com",
-      "loans": 11230,
-      "payDate": ""
     }
   ],
   "admin": {

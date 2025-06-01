@@ -30,9 +30,13 @@ export class DashboardService {
     return this.httpClient.post<Client>(`${basUrl}`,client)
   }
 
-  updateClients(id:string):Observable<Client>{
-    return this.httpClient.put<Client>(`${basUrl}`,id)
+  getClientsIdBy(id:number):Observable<Client[]>{
+    return this.httpClient.get<Client[]>(`${basUrl}?id=${id}`)
   }
+
+ updateClients(id: string, clientUpdate: any): Observable<Client> {
+  return this.httpClient.put<Client>(`${basUrl}/${id}`, clientUpdate);
+}
 
   deleteClients(id:string):Observable<Client>{
     return this.httpClient.delete<Client>(`${basUrl}/${id}`)

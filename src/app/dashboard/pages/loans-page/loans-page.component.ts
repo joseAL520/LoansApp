@@ -61,7 +61,7 @@ export class LoansPageComponent {
     )
   }
 
-  //update
+
 
   //delete
   clietnDeleteBy(x:string){
@@ -74,5 +74,9 @@ export class LoansPageComponent {
     }
   }
     )
+  }
+
+  ngOnInit(): void {
+   this.clientsRequest.update(r => ({ ...r }));
   }
 }
