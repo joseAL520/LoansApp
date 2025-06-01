@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, input, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Client } from '../../interfaces/clients.interfaces';
 
 @Component({
   selector: 'app-dashboard-list',
@@ -7,8 +8,24 @@ import { RouterLink } from '@angular/router';
   templateUrl: './dashboard-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardListComponent { 
+export class DashboardListComponent {
 
- typeRoute = input<string>()
+
+  typeRoute = input<string>()
+
+  clients = input<Client[]>()
+  isLoading = input<boolean>(false)
+  ismessangerError = input<string | undefined | unknown>()
+  
+  searchOutput = output<void>();
+  deleteOutput = output<string>();
+
+  onSearch(x:any) {
+    this.searchOutput.emit(x.target.value)
+  }
+
+  onDelete(x:string) {
+   this.deleteOutput.emit(x)
+  }
 
 }

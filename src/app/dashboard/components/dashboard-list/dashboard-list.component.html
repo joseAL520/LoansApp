@@ -1,6 +1,6 @@
 <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 m-6 flex flex-col ">
 
-   <input type="text" placeholder="Buscar X Cc" class="input m-2.5" />
+  <input type="number" placeholder="Buscar X Cc" class="input m-2.5"   (keyup)="onSearch($event)"/>
 
   <table class="table">
     <!-- head -->
@@ -14,11 +14,12 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Maximo de 7 y minimo 3 -->
+
+    @for (item of clients();  track item.id; let index = $index; ) {
       <tr>
-        <th>1</th>
-        <td>Juna</td>
-        <td>$100.000</td>
+        <th>{{index + 1}}</th>
+        <td>{{item.fullName}}</td>
+        <td>{{item.loans}}</td>
         
         @if (typeRoute() != 'loans') {
           <td>
@@ -30,26 +31,18 @@
 
         }@else if (typeRoute() === 'loans') {
           <td>
-            <button class="btn btn-outline btn-success" [routerLink]="['/lonsEdit',123123123]" >Editar</button>
+            <button class="btn btn-outline btn-success" [routerLink]="['/lonsEdit',item.id]" >Editar</button>
           </td>
           <td>
-            <button class="btn btn-outline btn-error">Eliminar</button>
+            <button class="btn btn-outline btn-error" (click)="onDelete(item.id)">Eliminar</button>
           </td>
         }
 
-
-        
       </tr>
-     
+   
+    }
     </tbody>
 </table>
       
-@if (typeRoute() != 'loans' ) {
-    <div class="join  justify-center m-2.5">
-    <button class="join-item btn">«</button>
-    <button class="join-item btn">Page 22</button>
-    <button class="join-item btn">»</button>
-  </div>
-}
 
 </div>

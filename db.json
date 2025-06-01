@@ -1,0 +1,28 @@
+{
+  "clients": [
+    {
+      "id": "1",
+      "nit": 123456789,
+      "fullName": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "loans": 5000,
+      "payDate": "2025-06-15"
+    },
+    {
+      "id": "2",
+      "nit": 987654321,
+      "fullName": "María Rodríguez",
+      "email": "maria.rodriguez@example.com",
+      "loans": 3000,
+      "payDate": "2025-07-01"
+    }
+  ],
+  "admin": {
+    "email": "admin@gmil.com",
+    "password": "admin123",
+    "Wallet": {
+      "capital": 1000000,
+      "totalLoans": 128400
+    }
+  }
+}
