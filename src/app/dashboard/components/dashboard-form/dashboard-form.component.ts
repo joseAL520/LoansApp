@@ -33,14 +33,19 @@ export class DashboardFormComponent  {
   formOutput = output<any>();
 
   onSubmit(){
+  
    this.myForm.markAllAsTouched();
    if(!this.myForm.valid)return
+   if(this.idGenel) return this.updateClient()
 
-    if(this.idGenel) return this.updateClient()
-
+   if(!this.randomClientAprobation()) {
+    this.myForm.reset( {id: uuidv4()})
+    return  alert('Solicitu no aprobado')
+   }
+      
     const newClient = this.myForm.value
     this.formOutput.emit(newClient)
-    this.myForm.reset()
+    this.myForm.reset( {id: uuidv4()})
   }
   
   updateClient(){
@@ -48,6 +53,15 @@ export class DashboardFormComponent  {
    
     this.serviceClient.updateClients(this.idGenel, client).subscribe();
     this.router.navigateByUrl('/lonsAgg');
+  }
+
+  randomClientAprobation(){
+    const data =  Math.random() * 2 + 0
+    const data2 = Math.floor(data)
+    if(data2){
+      return true
+    }
+   return false
   }
 
   ngOnInit(): void {
