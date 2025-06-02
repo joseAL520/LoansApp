@@ -27,17 +27,17 @@
 
             @if (typeRoute() != 'loans') {
               <td>
-                <button class="btn btn-sm btn-outline btn-primary w-full sm:w-auto">Más</button>
+                <app-modal-confirmation [optionMenu]="`mas`"></app-modal-confirmation>
               </td>
               <td>
-                <button class="btn btn-sm btn-outline btn-success w-full sm:w-auto">Pagar</button>
+                <app-modal-confirmation [optionMenu]="`pay`" (proceed)="onDelete( item.id, $event)" ></app-modal-confirmation>
               </td>
             } @else if (typeRoute() === 'loans') {
               <td>
                 <button class="btn btn-sm btn-outline btn-success w-full sm:w-auto" [routerLink]="['/lonsEdit', item.id]">Editar</button>
               </td>
               <td>
-                <button class="btn btn-sm btn-outline btn-error w-full sm:w-auto" (click)="onDelete(item.id)">Eliminar</button>
+                <app-modal-confirmation [optionMenu]="`delete`"  (proceed)="onDelete( item.id, $event)"></app-modal-confirmation>
               </td>
             }
 

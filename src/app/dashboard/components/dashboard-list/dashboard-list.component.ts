@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, input, output } from 
 import { RouterLink } from '@angular/router';
 import { Client } from '../../interfaces/clients.interfaces';
 import { CurrencyPipe } from '@angular/common';
+import { ModalConfirmationComponent } from "../modalConfirmation/modalConfirmation.component";
 
 @Component({
   selector: 'app-dashboard-list',
-  imports: [RouterLink, CurrencyPipe],
+  imports: [RouterLink, CurrencyPipe, ModalConfirmationComponent],
   templateUrl: './dashboard-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -25,8 +26,9 @@ export class DashboardListComponent {
     this.searchOutput.emit(x.target.value)
   }
 
-  onDelete(x:string) {
-   this.deleteOutput.emit(x)
+  onDelete(x:string,proceed:boolean) {
+    console.log(x,proceed)
+    if(proceed) return this.deleteOutput.emit(x)
   }
 
 }

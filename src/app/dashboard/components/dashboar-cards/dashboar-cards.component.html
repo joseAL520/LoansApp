@@ -3,14 +3,14 @@
   <div class="card w-80 sm:w-96 bg-base-100 shadow-sm">
     <div class="card-body text-center md:text-left">
       <h2 class="card-title">Capital del Banco</h2>
-      <h1 class="text-3xl text-warning">{{wallet()?.Wallet?.capital | currency:'COP': '$': '1.2-2'}}</h1>
+      <h1 class="text-3xl text-warning">{{capital() | currency:'COP': '$': '1.2-2'}}</h1>
     </div>
   </div>
 
   <div class="card w-80 sm:w-96 bg-base-100 shadow-sm">
     <div class="card-body text-center md:text-left">
       <h2 class="card-title">Monto Prestado</h2>
-      <h1 class="text-3xl text-error">{{wallet()?.Wallet?.totalLoans | currency:'COP': '$': '1.2-2'}}</h1>
+      <h1 class="text-3xl text-error">{{loans() | currency:'COP': '$': '1.2-2'}}</h1>
     </div>
   </div>
 

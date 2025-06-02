@@ -1,7 +1,11 @@
-<app-dashboar-cards [wallet]="adminService? adminService.user() :  null "></app-dashboar-cards> 
+<app-dashboar-cards [capital]="capital()" [loans]="totalLoans()"></app-dashboar-cards> 
 
 <div class="flex flex-col">
-  <app-dashboard-list  [clients]="searchedClients ? searchedClients : clientsResource.value()" (searchOutput)="clietnSearchBy($event)"></app-dashboard-list>
+  <app-dashboard-list  
+    [clients]="searchedClients ? searchedClients : clientsResource.value()" 
+    (searchOutput)="clietnSearchBy($event)"
+    (deleteOutput)="clietnDeleteBy($event)"
+    ></app-dashboard-list>
 
 
   <div class="join  justify-center mb-12">
