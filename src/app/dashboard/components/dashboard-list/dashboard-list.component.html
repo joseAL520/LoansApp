@@ -23,7 +23,7 @@
           <tr>
             <th>{{ index + 1 }}</th>
             <td>{{ item.fullName }}</td>
-            <td>{{ item.loans }}</td>
+            <td>{{ item.loans | currency:'COP': '$': '1.2-2' }}</td>
 
             @if (typeRoute() != 'loans') {
               <td>
