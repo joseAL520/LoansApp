@@ -4,6 +4,7 @@ import { DashboardListComponent } from "../../components/dashboard-list/dashboar
 import { DashboardService } from '../../services/dashboard.service';
 import { firstValueFrom } from 'rxjs';
 import { Client } from '../../interfaces/clients.interfaces';
+import { AdmBankService } from '../../../auth/services/admBank.service';
 
 @Component({
   selector: 'app-dashboar-page',
@@ -16,6 +17,8 @@ export class DashboarPageComponent  {
   searchedClients?: Client[]| null = null;
 
   clientService = inject(DashboardService)
+  adminService = inject(AdmBankService)
+
   limit = 7;
   currentPage = signal(0);
   lastLoadCount = signal(0);
