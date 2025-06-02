@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth.interfaces';
 import { rxResource } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 
 type AuthStatus = 'cheking' | 'authenticated' | 'not-authenticated';
 const baseUrl = environment.baseUrlAdmBank
@@ -20,6 +21,8 @@ export class AdmBankService {
   private _token = signal<string|null>(null);
 
   private http = inject(HttpClient);
+
+  router = inject(Router)
 
   checkStatusResource = rxResource({
     loader: () => this.checkStatus(),
@@ -46,11 +49,10 @@ export class AdmBankService {
   checkStatus(): Observable<boolean> {
     const token = localStorage.getItem('token');
     if (!token) {
+      this.router.navigateByUrl('/auth/')
       this.logout();
       return of(false);
     }
-
-    console.log('token de check',token)
     return this.http.get<AuthResponse>(`${baseUrl}`, {
         // headers: {
         //   Authorization: `Bearer ${token}`,
@@ -61,12 +63,11 @@ export class AdmBankService {
         catchError((error: any) => this.handleAuthError(error))
       );
  }
-
   logout() {
     this._user.set(null);
     this._token.set(null);
     this._authStatus.set('not-authenticated');
-
+    this.router.navigateByUrl('/auth/')
     localStorage.removeItem('token');
   }
 
