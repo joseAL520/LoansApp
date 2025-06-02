@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component, inject, resource, signal } from '@a
 import { DashboarCardsComponent } from "../../components/dashboar-cards/dashboar-cards.component";
 import { DashboardFormComponent } from "../../components/dashboard-form/dashboard-form.component";
 import { DashboardListComponent } from "../../components/dashboard-list/dashboard-list.component";
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, map } from 'rxjs';
 import { DashboardService } from '../../services/dashboard.service';
 import { Client } from '../../interfaces/clients.interfaces';
+import { AdmBankService } from '../../../auth/services/admBank.service';
 
 @Component({
   selector: 'app-loans-page',
@@ -17,18 +18,27 @@ export class LoansPageComponent {
   searchedClients?: Client[]| null = null;
 
   clientService = inject(DashboardService)
-  clientsRequest = signal({});  
+  adminService = inject(AdmBankService)
+
+  clientsRequest = signal({});
+  
+  totalLoans = signal<number| null>(null) 
+  capital = signal<number| undefined>(undefined)
+  
   limit = 5;
 
   //get 
   clientsResource = resource({
-      request: this.clientsRequest,
-      loader: async({ request: offset } ) => {
-        return await firstValueFrom(
-          this.clientService.getClients(this.limit)
-        )
-      },
+    request: this.clientsRequest,
+      loader: async ({ request: offset }) => {
+      const clients = await firstValueFrom(
+        this.clientService.getClientsLimit(this.limit, 0),
+      );
+      this.calculateFinancialSummary()
+      return clients;
+    }
   })
+
 
   //getById
   clietnSearchBy(event: any) {
@@ -59,6 +69,19 @@ export class LoansPageComponent {
     }
   }
     )
+  }
+
+  calculateFinancialSummary(){
+    const capital = this.adminService.user()?.Wallet.capital ?? 0;
+    this.clientService.getClients().pipe(
+      map(clients => 
+        clients.reduce((total, client) => total + (client.loans || 0), 0)
+      )
+    ).subscribe(totalLoans => {
+      this.totalLoans.set(totalLoans) ;
+      const availableCapital = capital - totalLoans;
+      this.capital.set(availableCapital);
+    });
   }
 
 

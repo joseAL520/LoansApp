@@ -13,13 +13,17 @@ export class DashboardService {
   private httpClient = inject(HttpClient)
 
 
-  getClients(limit: number, offset: number = 0):Observable<Client[]>{
+  getClientsLimit(limit: number, offset: number = 0):Observable<Client[]>{
     return this.httpClient.get<Client[]>(`${basUrl}`,{
       params:{
         _limit:limit,
         _start:offset
       }
     })  
+  }
+
+  getClients():Observable<Client[]>{
+    return this.httpClient.get<Client[]>(`${basUrl}`)  
   }
 
   getClientsById(id:number):Observable<Client[]>{
@@ -30,7 +34,7 @@ export class DashboardService {
     return this.httpClient.post<Client>(`${basUrl}`,client)
   }
 
-  getClientsIdBy(id:number):Observable<Client[]>{
+  getClientsIdBy(id:any):Observable<Client[]>{
     return this.httpClient.get<Client[]>(`${basUrl}?id=${id}`)
   }
 
