@@ -7,6 +7,16 @@
     (keyup)="onSearch($event)"
   />
 
+  @if(!clients()?.length){
+    <th>
+      <div role="alert" class="alert alert-info">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+            <span>Por favor Verificar el Numero de documento que este correctamente digitado</span>
+        </div>
+    </th>
+  }  
   <div class="w-full overflow-x-auto">
     <table class="table table-zebra">
       <!-- head -->
@@ -15,7 +25,6 @@
           <th>#</th>
           <th>Nombre</th>
           <th>Monto</th>
-          <th colspan="2" class="text-center">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -26,9 +35,6 @@
             <td>{{ item.loans | currency:'COP': '$': '1.2-2' }}</td>
 
             @if (typeRoute() != 'loans') {
-              <td>
-                <app-modal-confirmation [optionMenu]="`mas`" [idClient]=" item.id " ></app-modal-confirmation>
-              </td>
               <td>
                 <app-modal-confirmation [optionMenu]="`pay`" (proceed)="onDelete( item.id, $event)" ></app-modal-confirmation>
               </td>
@@ -42,7 +48,7 @@
             }
 
           </tr>
-        }
+        }  
       </tbody>
     </table>
   </div>

@@ -27,7 +27,7 @@ export class DashboardListComponent {
   }
 
   onDelete(x:string,proceed:boolean) {
-    console.log(x,proceed)
+    this.searchOutput.emit()
     if(proceed) return this.deleteOutput.emit(x)
   }
 
