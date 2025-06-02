@@ -15,6 +15,30 @@
       "email": "maria.rodriguez@example.com",
       "loans": 3000,
       "payDate": "2025-07-01"
+    },
+    {
+      "id": "c94871c5-74d7-4cca-90c3-436be432e8f5",
+      "nit": 13310,
+      "fullName": "123121123",
+      "email": "jose.albelt187@gmai.com",
+      "loans": 10000,
+      "payDate": "2025-06-25"
+    },
+    {
+      "id": "647ceca8-c854-44a4-b686-d0bf0ef85902",
+      "nit": 8712312,
+      "fullName": "jose.albelt",
+      "email": "jose.albel1312@fasd",
+      "loans": 10000,
+      "payDate": null
+    },
+    {
+      "id": "2c083018-80e9-4015-bf9b-0796c2dc0167",
+      "nit": 123120,
+      "fullName": "123123123123",
+      "email": "12312123@dasd1",
+      "loans": 13123,
+      "payDate": "0123-03-12"
     }
   ],
   "admin": {
