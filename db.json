@@ -41,12 +41,19 @@
       "payDate": "0123-03-12"
     }
   ],
-  "admin": {
-    "email": "admin@gmil.com",
-    "password": "admin123",
-    "Wallet": {
-      "capital": 1000000,
-      "totalLoans": 128400
-    }
+  "login":{
+    "user": {
+      "id": "52e100ce-f9ae-41df-a371-9364123a0454",
+      "email": "jose.albelt1817@gmail.com",
+      "password": "123456789",
+      "fullName": "admin",
+      "Wallet": {
+        "capital": 1000000,
+        "totalLoans": 128400
+      },
+      "role": ["admin"]
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IiIsImVtYWlsIjoiYWRtaW5AZ21pbC5jb20iLCJwYXNzd29yZCI6ImFkbWluMTIzIiwiV2FsbGV0Ijp7ImNhcGl0YWwiOjEwMDAwMDAsInRvdGFsTG9hbnMiOjEyODQwMH19.fEZsPxkIzDI6q2eZAWQp-gEQhRwIRTszIIB5boMa1D8"
   }
+  
 }
