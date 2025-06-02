@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import { from, map, min, switchMap } from 'rxjs';
@@ -13,13 +13,15 @@ import { DashboardService } from '../../services/dashboard.service';
   templateUrl: './dashboard-form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardFormComponent  { 
+export class DashboardFormComponent  {
   private idGenel = '';
- 
-  router = inject(Router)   
+
+  router = inject(Router)
   activateRouter= inject(ActivatedRoute)
   serviceClient = inject(DashboardService)
 
+  isActiveAlertError = signal<boolean>(false)
+  isActiveAlertSuccess = signal<boolean>(false)
   private fb  = inject(FormBuilder)
   myForm = this.fb.group({
     id:[uuidv4()],
@@ -33,24 +35,36 @@ export class DashboardFormComponent  {
   formOutput = output<any>();
 
   onSubmit(){
-  
+
    this.myForm.markAllAsTouched();
    if(!this.myForm.valid)return
    if(this.idGenel) return this.updateClient()
 
    if(!this.randomClientAprobation()) {
     this.myForm.reset( {id: uuidv4()})
-    return  alert('Solicitu no aprobado')
+    this.isActiveAlertError.set(true)
+      if( this.isActiveAlertError){
+          setTimeout(() => {
+        this.isActiveAlertError.set(false)
+      }, 3000);
+      }
+
+    return
    }
-      
+
+    this.isActiveAlertSuccess.set(true)
+   setTimeout(() => {
+    this.isActiveAlertSuccess.set(true)
+   }, 3000);
+
     const newClient = this.myForm.value
     this.formOutput.emit(newClient)
     this.myForm.reset( {id: uuidv4()})
   }
-  
+
   updateClient(){
     const client = this.myForm.value;
-   
+
     this.serviceClient.updateClients(this.idGenel, client).subscribe();
     this.router.navigateByUrl('/lonsAgg');
   }
@@ -66,7 +80,7 @@ export class DashboardFormComponent  {
 
   ngOnInit(): void {
     if(!this.router.url.includes('lonsEdit')) return
-    
+
     this.activateRouter.params.pipe(
       switchMap(params  => {
            const id = params['id'];
@@ -89,6 +103,6 @@ export class DashboardFormComponent  {
         })
       }
     );
-    
+
   }
 }
