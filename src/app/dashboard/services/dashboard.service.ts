@@ -34,7 +34,7 @@ export class DashboardService {
     return this.httpClient.post<Client>(`${basUrl}`,client)
   }
 
-  getClientsIdBy(id:number):Observable<Client[]>{
+  getClientsIdBy(id:any):Observable<Client[]>{
     return this.httpClient.get<Client[]>(`${basUrl}?id=${id}`)
   }
 

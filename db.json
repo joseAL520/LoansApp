@@ -1,22 +1,6 @@
 {
   "clients": [
     {
-      "id": "9231100ce-d9ae-41df-a371-9364123a4444",
-      "nit": 445566778,
-      "fullName": "Camila Vargas",
-      "email": "camila.vargas@example.com",
-      "loans": 77000,
-      "payDate": "2025-06-25"
-    },
-    {
-      "id": "1031100ce-e9ae-41df-a371-9364123a5555",
-      "nit": 556677889,
-      "fullName": "Julián Herrera",
-      "email": "julian.herrera@example.com",
-      "loans": 39000,
-      "payDate": "2025-07-10"
-    },
-    {
       "id": "1131100ce-f9ae-41df-a371-9364123a6666",
       "nit": 667788990,
       "fullName": "Valentina Morales",

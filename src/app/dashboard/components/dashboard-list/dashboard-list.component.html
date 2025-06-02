@@ -27,7 +27,7 @@
 
             @if (typeRoute() != 'loans') {
               <td>
-                <app-modal-confirmation [optionMenu]="`mas`"></app-modal-confirmation>
+                <app-modal-confirmation [optionMenu]="`mas`" [idClient]=" item.id " ></app-modal-confirmation>
               </td>
               <td>
                 <app-modal-confirmation [optionMenu]="`pay`" (proceed)="onDelete( item.id, $event)" ></app-modal-confirmation>
