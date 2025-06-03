@@ -1,50 +1,79 @@
-<button class="lg:hidden fixed top-4 left-4 z-50 btn btn-square btn-ghost" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+<button
+  class="lg:hidden fixed top-4 left-4 z-50 btn btn-square btn-ghost"
+  (click)="toggleSidebar()"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="feather feather-menu"
+  >
     <path d="M3 12h18M3 6h18M3 18h18" />
   </svg>
 </button>
 
-
-<section id="sidebar"
-  class="fixed top-0 left-0 z-40 w-60 h-screen bg-base-200 flex flex-col gap-2.5 transform transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 lg:relative">
+<section
+  id="sidebar"
+  class="fixed top-0 left-0 z-40 w-60 h-screen bg-base-200 flex flex-col gap-2.5 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:relative"
+  [class.-translate-x-full]="!sidebarOpen"
+>
   <div class="text-center p-4 flex flex-col items-center justify-center">
-   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M33.444 43.315A21.5 21.5 0 0 1 24 45.5C12.126 45.5 2.5 35.874 2.5 24S12.126 2.5 24 2.5S45.5 12.126 45.5 24a21.5 21.5 0 0 1-2.177 9.428m-7.724-1.299l-.001.002" stroke-width="1"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M32.28 29.701c1.113-.451 3.092-1.05 3.688-.327c.483.586.146 1.686-.37 2.755" stroke-width="1"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M11.798 30.223c1.758 1.397 6.953 3.534 12.487 3.534a17 17 0 0 0 10.167-3.079m-.95-9.911v3.288a2.436 2.436 0 0 1-4.159 1.723" stroke-width="1"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M33.502 16.748v4.019a2.436 2.436 0 1 1-4.872 0v-4.019m-2.21 4.05a2.454 2.454 0 0 1-4.909 0v-1.595a2.454 2.454 0 0 1 4.909 0m-.001 4.049v-6.504m-11.921 4.121a2.436 2.436 0 1 0 4.87 0v-1.583a2.436 2.436 0 1 0-4.87 0m0-2.436v9.743" stroke-width="1"/><circle cx="38.499" cy="38.5" r="7" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M39.536 38.5a2 2 0 1 1 0 4h-3.3v-8h3.3a2 2 0 1 1 0 4m-.001 0h-3.299" stroke-width="1"/></svg>
-    <strong class="text-2xl text-primary mt-2">LoandsApp</strong>
+   <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path fill="#000" d="M17 3.34A10 10 0 1 1 2 12l.005-.324A10 10 0 0 1 17 3.34M12 6a1 1 0 0 0-1 1a3 3 0 1 0 0 6v2a1.02 1.02 0 0 1-.866-.398l-.068-.101a1 1 0 0 0-1.732.998a3 3 0 0 0 2.505 1.5H11a1 1 0 0 0 .883.994L12 18a1 1 0 0 0 1-1l.176-.005A3 3 0 0 0 13 11V9c.358-.012.671.14.866.398l.068.101a1 1 0 0 0 1.732-.998A3 3 0 0 0 13.161 7H13a1 1 0 0 0-1-1m1 7a1 1 0 0 1 0 2zm-2-4v2a1 1 0 0 1 0-2"/></svg>
     <span class="text-xs text-primary">LoandsApp</span>
   </div>
-
-  <hr>
-  @if(serviceUser.authStatus() === 'authenticated'){
-    <div class="text-center p-4 flex flex-col items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-          width="30" height="30" 
-          viewBox="0 0 24 24"><path fill="#000" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
-      <span class="text-xs text-primary">
-        {{ serviceUser.user()?.fullName }}
-      </span>
-      <button class="btn btn-sm btn-error" (click)="serviceUser.logout()">
-        Salir
-      </button>
-    </div>
-  }
-  <hr>
-
+  <hr />
+   <div class="text-center p-4 flex flex-row items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+    <span class="text-xs text-primary">{{serviceUser.user()?.fullName}}</span>
+    <br>
+    
+  </div>
+  <hr />
   <ul class="menu rounded-box w-56 gap-5">
     <li>
-      <a routerLink='/' routerLinkActive="router-link-active">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          viewBox="0 0 24 24"><path fill="#000" d="M13 9V3h8v6zM3 13V3h8v10zm10 8V11h8v10zM3 21v-6h8v6z"/></svg>
+      <a
+        routerLink="/"
+        routerLinkActive="router-link-active"
+        (click)="closeSidebarOnMobile()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="#000" d="M13 9V3h8v6zM3 13V3h8v10zm10 8V11h8v10zM3 21v-6h8v6z" />
+        </svg>
         Panel Principal
       </a>
     </li>
     <li>
-      <a routerLink='/lonsAgg' routerLinkActive="router-link-active">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          viewBox="0 0 16 16"><path fill="#000" d="M7 2H5a3.5 3.5 0 1 0 0 7h2v3H2.5v2H7v2h2v-2h2a3.5 3.5 0 1 0 0-7H9V4h4.5V2H9V0H7z"/></svg>
+      <a
+        routerLink="/lonsAgg"
+        routerLinkActive="router-link-active"
+        (click)="closeSidebarOnMobile()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill="#000"
+            d="M7 2H5a3.5 3.5 0 1 0 0 7h2v3H2.5v2H7v2h2v-2h2a3.5 3.5 0 1 0 0-7H9V4h4.5V2H9V0H7z"
+          />
+        </svg>
         Panel Prestamos
       </a>
     </li>
   </ul>
-
+  <div class="p-4 border-t border-base-300 mt-14">
+    <button class="btn btn-sm btn-error " (click)="serviceUser.logout()">Cerrar Sesión</button>
+  </div>
 </section>
