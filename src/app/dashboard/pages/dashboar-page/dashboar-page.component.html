@@ -3,6 +3,7 @@
 <div class="flex flex-col">
   <app-dashboard-list  
     [clients]="searchedClients ? searchedClients : clientsResource.value()" 
+    [isLoading]="clientsResource.isLoading()"
     (searchOutput)="clietnSearchBy($event)"
     (deleteOutput)="clietnDeleteBy($event)"
     ></app-dashboard-list>

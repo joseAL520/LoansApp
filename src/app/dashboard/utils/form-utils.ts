@@ -21,7 +21,7 @@ export class FormUtils {
           return `Valor mínimo de ${errors['min'].min}`;
 
         case 'max':
-          return `Valor mínimo de ${errors['max'].max}`;
+          return `Valor Maximo de ${errors['max'].max}`;
 
         case 'email':
           return `no es un correo electrónico`;

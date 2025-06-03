@@ -1,50 +1,66 @@
 {
   "clients": [
     {
-      "id": "1131100ce-f9ae-41df-a371-9364123a6666",
-      "nit": 667788990,
-      "fullName": "Valentina Morales",
-      "email": "valentina.morales@example.com",
+      "id": "d4e5f6a7-2345-6789-abcd-ef1234567890",
+      "nit": 321654987,
+      "fullName": "Laura ferNándEz",
+      "email": "laura.fernandez@yahoo.com",
+      "loans": 91000,
+      "payDate": "2025-07-10"
+    },
+    {
+      "id": "e5f6a7b8-3456-7890-bcde-f12345678901",
+      "nit": 789123456,
+      "fullName": "diego torres",
+      "email": "diego.torres@gmail.com",
+      "loans": 48000,
+      "payDate": "2025-06-25"
+    },
+    {
+      "id": "f6a7b8c9-4567-8901-cdef-234567890123",
+      "nit": 654987321,
+      "fullName": "maría lópez",
+      "email": "maria_lopez@hotmail.com",
       "loans": 100000,
-      "payDate": "2025-06-22"
+      "payDate": "2025-07-05"
     },
     {
-      "id": "1231100ce-g9ae-41df-a371-9364123a7777",
-      "nit": 778899001,
-      "fullName": "Esteban Castro",
-      "email": "esteban.castro@example.com",
-      "loans": 88000,
-      "payDate": "2025-07-08"
+      "id": "a7b8c9d0-5678-9012-def0-345678901234",
+      "nit": 147258369,
+      "fullName": "sergio díaz",
+      "email": "sergio.diaz@outlook.com",
+      "loans": 16000,
+      "payDate": "2025-06-20"
     },
     {
-      "id": "1331100ce-h9ae-41df-a371-9364123a8888",
-      "nit": 889900112,
-      "fullName": "Daniela Paredes",
-      "email": "daniela.paredes@example.com",
-      "loans": 62000,
-      "payDate": "2025-06-18"
-    },
-    {
-      "id": "1431100ce-i9ae-41df-a371-9364123a9999",
-      "nit": 990011223,
-      "fullName": "Tomás León",
-      "email": "tomas.leon@example.com",
-      "loans": 31000,
+      "id": "b8c9d0e1-6789-0123-ef01-456789012345",
+      "nit": 963852741,
+      "fullName": "natalia rojas",
+      "email": "natalia.rojas@yahoo.com",
+      "loans": 72000,
       "payDate": "2025-06-28"
     },
     {
-      "id": "1531100ce-j9ae-41df-a371-9364123aaaaa",
-      "nit": 101112131,
-      "fullName": "Natalia Ríos",
-      "email": "natalia.rios@example.com",
-      "loans": 56000,
+      "id": "c9d0e1f2-7890-1234-f012-567890123456",
+      "nit": 852963741,
+      "fullName": "luis herrera",
+      "email": "luis.herrera@gmail.com",
+      "loans": 31000,
+      "payDate": "2025-07-03"
+    },
+    {
+      "id": "c9d0e1f112-7890-1234-f012-567890123456",
+      "nit": 8529637412321,
+      "fullName": "muis perrera",
+      "email": "luis.herrera@gmail.com",
+      "loans": 31000,
       "payDate": "2025-07-03"
     }
   ],
   "login": {
     "user": {
       "id": "52e100ce-f9ae-41df-a371-9364123a0454",
-      "email": "jose.albelt1817@gmail.com",
+      "email": "adimin@gmail.com",
       "password": "123456789",
       "fullName": "admin",
       "Wallet": {

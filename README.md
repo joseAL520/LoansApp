@@ -23,4 +23,9 @@ ng serve
   json-server --watch db.json
   ng-serve -o
   
+## 
+usuario y contrasena del Login
+ >"email": "admin@gmail.com",
+ >"password": "123456789",
+
 

@@ -11,8 +11,15 @@ const basUrl = environment.baseUrlClient
 export class DashboardService {
 
   private httpClient = inject(HttpClient)
+  private normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD') 
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim();
+}
 
-
+  //NOTA: cree dos get para una para manejos con parametros y otros no
   getClientsLimit(limit: number, offset: number = 0):Observable<Client[]>{
     return this.httpClient.get<Client[]>(`${basUrl}`,{
       params:{
@@ -26,9 +33,23 @@ export class DashboardService {
     return this.httpClient.get<Client[]>(`${basUrl}`)  
   }
 
-  getClientsById(id:number):Observable<Client[]>{
-    return this.httpClient.get<Client[]>(`${basUrl}?nit=${id}`)
+  getClientsById(term: string): Observable<Client[]> {
+    const isNumeric = /^\d+$/.test(term);
+    if (isNumeric) {
+    
+      return this.httpClient.get<Client[]>(`${basUrl}?nit=${term}`);
+    } else {
+    
+      return this.httpClient.get<Client[]>(`${basUrl}`).pipe(
+        map(clients =>
+          clients.filter(client =>
+            this.normalize(client.fullName).includes(this.normalize(term))
+          )
+        )
+      );
+    }
   }
+
 
   postClients(client:any):Observable<Client>{
     return this.httpClient.post<Client>(`${basUrl}`,client)

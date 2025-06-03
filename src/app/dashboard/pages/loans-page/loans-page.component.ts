@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, resource, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, resource, signal } from '@angular/core';
 import { DashboarCardsComponent } from "../../components/dashboar-cards/dashboar-cards.component";
 import { DashboardFormComponent } from "../../components/dashboard-form/dashboard-form.component";
 import { DashboardListComponent } from "../../components/dashboard-list/dashboard-list.component";
@@ -20,19 +20,22 @@ export class LoansPageComponent {
   clientService = inject(DashboardService)
   adminService = inject(AdmBankService)
 
-  clientsRequest = signal({});
   
   totalLoans = signal<number| null>(null) 
   capital = signal<number| undefined>(undefined)
-  
-  limit = 5;
+
+
+  currentPage = signal(0);
+  offset = computed(() => this.currentPage() * 3); 
 
   //get 
-  clientsResource = resource({
-    request: this.clientsRequest,
-      loader: async ({ request: offset }) => {
+ clientsResource = resource({
+    request: (() => this.offset()),
+    loader: async ({ request: offset }) => {
       const clients = await firstValueFrom(
-        this.clientService.getClientsLimit(this.limit, 0),
+        this.clientService.getClients().pipe(
+          map( clients =>  clients.slice(-3))
+        ),
       );
       this.calculateFinancialSummary()
       return clients;
@@ -42,12 +45,12 @@ export class LoansPageComponent {
 
   //getById
   clietnSearchBy(event: any) {
-    const id = Number(event);
-    if (!id) {
+   
+    if (!event) {
       this.searchedClients = null; 
       return;
     }
-    this.clientService.getClientsById(id).subscribe({
+    this.clientService.getClientsById(event).subscribe({
       next: (clients) => {
         this.searchedClients = clients;
       },
@@ -62,7 +65,7 @@ export class LoansPageComponent {
   postClient(x:any){
     this.clientService.postClients(x).subscribe({
     next: () => {
-       this.clientsRequest.update(r => ({ ...r }));
+       this.clientsResource.reload()
     },
     error: (err) => {
       console.error('Error al enviar cliente', err);
@@ -90,7 +93,8 @@ export class LoansPageComponent {
   clietnDeleteBy(x:string){
     this.clientService.deleteClients(x).subscribe({
     next: () => {
-       this.clientsRequest.update(r => ({ ...r }));
+      this.clientsResource.reload()
+
     },
     error: (err) => {
       console.error('Error al eliminar cliente', err);
@@ -100,6 +104,6 @@ export class LoansPageComponent {
   }
 
   ngOnInit(): void {
-   this.clientsRequest.update(r => ({ ...r }));
+    this.clientsResource.reload()
   }
 }
