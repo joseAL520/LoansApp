@@ -41,6 +41,9 @@
             <th>{{ item.loans | currency:'COP': '$': '1.2-2' }}</th>
 
             @if (typeRoute() != 'loans') {
+              <td> 
+                 <app-modal-confirmation [optionMenu]="`mas`" [detalleClient]=" item "   ></app-modal-confirmation>  
+              </td>
               <td>
                 <app-modal-confirmation [optionMenu]="`pay`" (proceed)="onDelete( item.id, $event)" ></app-modal-confirmation>
               </td>
