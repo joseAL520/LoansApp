@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import { from, map, min, switchMap } from 'rxjs';
@@ -22,6 +22,8 @@ export class DashboardFormComponent  {
 
   isActiveAlertError = signal<boolean>(false)
   isActiveAlertSuccess = signal<boolean>(false)
+
+  deactivateRequestButton =input<boolean>(false)
   private fb  = inject(FormBuilder)
   myForm = this.fb.group({
     id:[uuidv4()],
