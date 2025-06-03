@@ -5,8 +5,16 @@
       "nit": 321654987,
       "fullName": "Laura ferNándEz",
       "email": "laura.fernandez@yahoo.com",
-      "loans": 91000,
+      "loans": 100000,
       "payDate": "2025-07-10"
+    },
+    {
+      "id": "706c861b-76f8-4718-b6e1-2d9de9681b93",
+      "nit": 123456789,
+      "fullName": "jose angel",
+      "email": "jose.albelt@gmail.com",
+      "loans": 100000,
+      "payDate": "2025-06-25"
     }
   ],
   "login": {
