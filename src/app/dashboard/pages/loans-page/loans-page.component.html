@@ -11,9 +11,11 @@
   <div class="w-full lg:w-1/2">
     <app-dashboard-list 
       typeRoute="loans" 
-      [clients]="searchedClients ? searchedClients : clientsResource.value()" 
+      [clients]="searchedClients ? searchedClients : clientsResource.value()"
+      [isLoading]="clientsResource.isLoading()" 
       (searchOutput)="clietnSearchBy($event)"
       (deleteOutput)="clietnDeleteBy($event)">
+
     </app-dashboard-list>
   </div>
   

@@ -28,6 +28,11 @@
         </tr>
       </thead>
       <tbody>
+        @if(isLoading()){
+        <div class="flex justify-center items-center">
+          <span class="loading loading-bars loading-xl"></span>
+        </div>
+        }
         @for (item of clients()?.slice()?.reverse(); track item.id ; let index = $index;) {
           <tr>
             <th>{{ index + 1 }}</th>
