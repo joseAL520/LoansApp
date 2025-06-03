@@ -45,12 +45,12 @@ export class LoansPageComponent {
 
   //getById
   clietnSearchBy(event: any) {
-    const id = Number(event);
-    if (!id) {
+   
+    if (!event) {
       this.searchedClients = null; 
       return;
     }
-    this.clientService.getClientsById(id).subscribe({
+    this.clientService.getClientsById(event).subscribe({
       next: (clients) => {
         this.searchedClients = clients;
       },

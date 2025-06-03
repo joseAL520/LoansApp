@@ -14,5 +14,6 @@ export class DashboarCardsComponent {
   capital = input<number>()
   loans = input<number | null>()
 
-  
+
 }
+

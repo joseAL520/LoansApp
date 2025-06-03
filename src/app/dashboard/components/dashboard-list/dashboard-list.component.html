@@ -1,8 +1,8 @@
 <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 m-4 sm:m-6 flex flex-col">
 
   <input
-    type="number"
-    placeholder="Buscar X Cc"
+    type="text"
+    placeholder="Buscar por Nombre o N. Cedula"
     class="input input-sm sm:input-md m-2.5 w-full max-w-xs"
     (keyup)="onSearch($event)"
   />
@@ -13,7 +13,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-            <span>Por favor Verificar el Numero de documento que este correctamente digitado</span>
+            <span>Por favor los datos que este correctamente digitado</span>
         </div>
     </th>
   }  
@@ -24,6 +24,7 @@
         <tr>
           <th>#</th>
           <th>Nombre</th>
+          <th></th>
           <th>Monto</th>
         </tr>
       </thead>
@@ -33,11 +34,11 @@
           <span class="loading loading-bars loading-xl"></span>
         </div>
         }
-        @for (item of clients()?.slice()?.reverse(); track item.id ; let index = $index;) {
+        @for (item of clients(); track item.id ; let index = $index;) {
           <tr>
             <th>{{ index + 1 }}</th>
-            <td>{{ item.fullName }}</td>
-            <td>{{ item.loans | currency:'COP': '$': '1.2-2' }}</td>
+            <th>{{ item.fullName | titlecase}} <th>
+            <th>{{ item.loans | currency:'COP': '$': '1.2-2' }}</th>
 
             @if (typeRoute() != 'loans') {
               <td>

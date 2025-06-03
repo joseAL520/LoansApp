@@ -26,8 +26,11 @@ export class DashboardService {
     return this.httpClient.get<Client[]>(`${basUrl}`)  
   }
 
-  getClientsById(id:number):Observable<Client[]>{
-    return this.httpClient.get<Client[]>(`${basUrl}?nit=${id}`)
+  getClientsById(term:string):Observable<Client[]>{
+    const isNumeric = /^\d+$/.test(term); 
+    const queryParam = isNumeric ? `nit=${term}` : `fullName=${encodeURIComponent(term)}`;
+    console.log(isNumeric,queryParam)
+    return this.httpClient.get<Client[]>(`${basUrl}?${queryParam}`)
   }
 
   postClients(client:any):Observable<Client>{

@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Client } from '../../interfaces/clients.interfaces';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { ModalConfirmationComponent } from "../modalConfirmation/modalConfirmation.component";
 
 @Component({
   selector: 'app-dashboard-list',
-  imports: [RouterLink, CurrencyPipe, ModalConfirmationComponent],
+  imports: [RouterLink, CurrencyPipe, ModalConfirmationComponent, TitleCasePipe],
   templateUrl: './dashboard-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

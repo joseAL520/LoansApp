@@ -25,7 +25,7 @@ ng serve
   
 ## 
 usuario y contrasena del Login
- >"email": "adimin@gmail.com",
+ >"email": "admin@gmail.com",
  >"password": "123456789",
 
 
