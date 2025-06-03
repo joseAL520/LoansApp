@@ -45,14 +45,14 @@
                  <app-modal-confirmation [optionMenu]="`mas`" [detalleClient]=" item "   ></app-modal-confirmation>  
               </td>
               <td>
-                <app-modal-confirmation [optionMenu]="`pay`" (proceed)="onDelete( item.id, $event)" ></app-modal-confirmation>
+                <app-modal-confirmation [optionMenu]="`pay`"  [detalleClient]=" item "   (proceed)="onDelete($event)"  ></app-modal-confirmation>
               </td>
             } @else if (typeRoute() === 'loans') {
               <td>
                 <button class="btn btn-sm btn-outline btn-success w-full sm:w-auto" [routerLink]="['/lonsEdit', item.id]">Editar</button>
               </td>
               <td>
-                <app-modal-confirmation [optionMenu]="`delete`"  (proceed)="onDelete( item.id, $event)"></app-modal-confirmation>
+                <app-modal-confirmation [optionMenu]="`delete`" [detalleClient]="item"  (proceed)="onDelete($event)"></app-modal-confirmation>
               </td>
             }
 

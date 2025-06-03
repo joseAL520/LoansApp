@@ -26,9 +26,9 @@ export class DashboardListComponent {
     this.searchOutput.emit(x.target.value)
   }
 
-  onDelete(x:string,proceed:boolean) {
-    this.searchOutput.emit()
-    if(proceed) return this.deleteOutput.emit(x)
+  onDelete(proceed:any) {
+    if(!proceed) return
+    this.deleteOutput.emit(proceed)
   }
 
 }

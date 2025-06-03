@@ -1,53 +1,70 @@
-@if(optionMenu() ==='pay'){
-    <label for="my_modal_1" class="btn btn-success">Pagar</label>
-    <input type="checkbox" id="my_modal_1" class="modal-toggle" />
-    <div class="modal">
-    <div class="modal-box">
-    <div role="alert" class="alert alert-warning">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-            <span>¿Estás seguro hacer esta Accion esta persona?!</span>
-    </div>
-        <p class="py-4">Al confirmar, se procederá con el pago y no podrás deshacer esta acción. </p>
-        <div class="modal-action">
-            <label for="my_modal_1" class="btn btn-success" (click)="confirmAction(true)">Proceder</label>
-            <label for="my_modal_1" class="btn btn-error">Cancelar</label>
-        </div>
-    </div>
-    </div>
+@if(optionMenu() === 'pay') {
+<button class="btn btn-success" (click)="openModal('pay', detalleClient()!)">Pagar</button>
 
-}
-
-@if(optionMenu() ==='delete'){
-    <label for="my_modal_1" class="btn btn-error">Eliminar</label>
-    <input type="checkbox" id="my_modal_1" class="modal-toggle" />
-    <div class="modal">
-    <div class="modal-box">
-    <div role="alert" class="alert alert-warning">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-            <span>¿Estás seguro Eliminar esta persona?!</span>
-        </div>
-        <p class="py-4">Al confirmar, se procederá con la eliminacion y no podrás deshacer esta acción. </p>
-        <div class="modal-action">
-            <label for="my_modal_1" class="btn btn-success" (click)="confirmAction(true)">Proceder</label>
-            <label for="my_modal_1" class="btn btn-error">Cancelar</label>
-        </div>
-    </div>
-    </div>
-
-}
-
-<!-- OPCIONAL -->
-@if(optionMenu() ==='mas'){ 
-  <button class="btn" [attr.data-id]="detalleClient()?.id" (click)="openModal()">Más</button>
-
-  <dialog [id]="'modal_' + detalleClient()?.id" class="modal">
+  <dialog [id]="'modal_pay_' + detalleClient()?.id" class="modal">
     <div class="modal-box">
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+
+      <div role="alert" class="alert alert-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span>¿Estás seguro de confirmar el pago? a <strong>{{ detalleClient()?.fullName }}</strong>?</span>
+      </div>
+
+      <p class="py-4">Esta acción no se puede deshacer.</p>
+
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-success" (click)="confirmAction()">Proceder</button>
+          <button class="btn btn-error">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+}
+
+@if(optionMenu() === 'delete') {
+  <button class="btn btn-error" (click)="openModal('delete',this.detalleClient()!)">Eliminar</button>
+
+  <dialog [id]="'modal_delete_' + detalleClient()?.id" class="modal">
+    <div class="modal-box">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+
+      <div role="alert" class="alert alert-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span>¿Estás seguro de eliminar a <strong>{{ detalleClient()?.fullName }}</strong>?</span>
+      </div>
+
+      <p class="py-4">Esta acción no se puede deshacer.</p>
+
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-success" (click)="confirmAction()">Proceder</button>
+          <button class="btn btn-error">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+}
+
+
+<!-- OPCIONAL -->
+@if(optionMenu() ==='mas'){ 
+ <button class="btn" [attr.data-id]="detalleClient()?.id" (click)="openModal('mas', detalleClient()!)">Más</button>
+
+  <dialog [id]="'modal_mas_' + detalleClient()?.id" class="modal" #modalMas>
+    <div class="modal-box">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"  >✕</button>
       </form>
 
       <div role="alert" class="alert alert-info">
@@ -56,17 +73,16 @@
 
       <div class="grid grid-cols-2 grid-rows-5 gap-4 bg-base-300 p-2.5">
         <div>Numero de Identificación:</div>
-        <div class="col-start-2">{{detalleClient()?.nit  | number }} </div>
+        <div class="col-start-2">{{ detalleClient()?.nit | number }}</div>
         <div>Nombre Completo:</div>
-        <div class="col-start-2">{{detalleClient()?.fullName | titlecase}}</div>
+        <div class="col-start-2">{{ detalleClient()?.fullName | titlecase }}</div>
         <div>Correo:</div>
-        <div class="col-start-2">{{detalleClient()?.email}}</div>
+        <div class="col-start-2">{{ detalleClient()?.email }}</div>
         <div>Monto Prestado:</div>
-        <div class="col-start-2">{{detalleClient()?.loans | currency:'COP':'$':'1.2-2'}}</div>
+        <div class="col-start-2">{{ detalleClient()?.loans | currency:'COP':'$':'1.2-2' }}</div>
         <div>Fecha de Pago:</div>
-        <div class="col-start-2">{{detalleClient()?.payDate}}</div>
+        <div class="col-start-2">{{ detalleClient()?.payDate }}</div>
       </div>
-
     </div>
   </dialog>
 }

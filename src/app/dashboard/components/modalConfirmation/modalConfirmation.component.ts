@@ -16,16 +16,22 @@ export class ModalConfirmationComponent {
   optionMenu = input();
   detalleClient = input<Client>();
   
-  proceed = output<boolean>();
+  proceed = output<any>();
 
-  confirmAction(confirm:boolean){
-    this.proceed.emit(confirm)
+
+  openModal(type: 'mas' | 'delete'| 'pay', client: Client) {
+    const modalId = `modal_${type}_${client.id}`;
+    const modal = document.getElementById(modalId) as HTMLDialogElement;
+    if (modal) modal.showModal();
   }
 
-  openModal() {
-    const id = 'modal_' + this.detalleClient()?.id;
-    const modal = document.getElementById(id) as HTMLDialogElement;
-    if (modal) modal.showModal();
- }
+confirmAction() {
+    if (this.detalleClient) {
+      this.proceed.emit(this.detalleClient()?.id);
+    }
+    const modalId = `modal_delete_${this.detalleClient()?.id}`;
+    const modal = document.getElementById(modalId) as HTMLDialogElement;
+    if (modal) modal.close();
+  }
 
 }
