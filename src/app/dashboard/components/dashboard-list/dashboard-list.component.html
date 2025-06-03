@@ -28,7 +28,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (item of clients(); track item.id; let index = $index;) {
+        @for (item of clients()?.slice()?.reverse(); track item.id ; let index = $index;) {
           <tr>
             <th>{{ index + 1 }}</th>
             <td>{{ item.fullName }}</td>

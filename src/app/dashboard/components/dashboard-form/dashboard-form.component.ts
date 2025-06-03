@@ -54,7 +54,7 @@ export class DashboardFormComponent  {
 
     this.isActiveAlertSuccess.set(true)
    setTimeout(() => {
-    this.isActiveAlertSuccess.set(true)
+    this.isActiveAlertSuccess.set(false)
    }, 3000);
 
     const newClient = this.myForm.value

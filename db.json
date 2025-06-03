@@ -39,6 +39,22 @@
       "email": "natalia.rios@example.com",
       "loans": 56000,
       "payDate": "2025-07-03"
+    },
+    {
+      "id": "77c7f103-6d71-4e89-9174-5ee1cbb01cd4",
+      "nit": 31232123,
+      "fullName": "123123123",
+      "email": "1231@123",
+      "loans": 12312,
+      "payDate": null
+    },
+    {
+      "id": "3bc9f696-d1af-4b57-bd59-1b94b52d4ae1",
+      "nit": 123123,
+      "fullName": "valentino",
+      "email": "123j@gamil.com",
+      "loans": 12312,
+      "payDate": "2025-07-10"
     }
   ],
   "login": {

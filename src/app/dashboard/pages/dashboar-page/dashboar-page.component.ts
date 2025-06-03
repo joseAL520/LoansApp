@@ -66,8 +66,13 @@ export class DashboarPageComponent  {
 
   nextPage() {
     if (this.lastLoadCount() === this.limit) {
-    this.currentPage.update(p => p + 1);
-  }
+    const nextOffset = (this.currentPage() + 1) * this.limit;
+    this.clientService.getClientsLimit(this.limit, nextOffset).subscribe(nextClients => {
+      if (nextClients.length > 0) {
+        this.currentPage.update(p => p + 1);
+      }
+    });
+   }
   } 
   prevPage() {
     this.currentPage.update(p => (p > 0 ? p - 1 : 0));

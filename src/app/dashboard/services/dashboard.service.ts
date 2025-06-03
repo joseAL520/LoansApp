@@ -12,7 +12,7 @@ export class DashboardService {
 
   private httpClient = inject(HttpClient)
 
-
+  //NOTA: cree dos get para una para manejos con parametros y otros no
   getClientsLimit(limit: number, offset: number = 0):Observable<Client[]>{
     return this.httpClient.get<Client[]>(`${basUrl}`,{
       params:{
