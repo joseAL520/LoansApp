@@ -3,7 +3,10 @@
 <div class="flex flex-col lg:flex-row bg-base-300 m-6 p-4 gap-6 rounded-xl">
 
   <div class="w-full lg:w-1/2">
-    <app-dashboard-form (formOutput)="postClient($event)" [deactivateRequestButton]="capital()?false :true"></app-dashboard-form>
+    <app-dashboard-form 
+      (formOutput)="postClient($event)" 
+      [deactivateRequestButton]="capital()?false :true"
+      [capital]="capital()"></app-dashboard-form>
   </div>
 
   <div class="divider divider-horizontal hidden lg:flex">.</div>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output, signal, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import { from, map, min, switchMap } from 'rxjs';
@@ -15,6 +15,7 @@ import { DashboardService } from '../../services/dashboard.service';
 })
 export class DashboardFormComponent  {
   private idGenel = '';
+  private fb  = inject(FormBuilder)
 
   router = inject(Router)
   activateRouter= inject(ActivatedRoute)
@@ -24,17 +25,18 @@ export class DashboardFormComponent  {
   isActiveAlertSuccess = signal<boolean>(false)
 
   deactivateRequestButton =input<boolean>(false)
-  private fb  = inject(FormBuilder)
+  capital = input<number|undefined>()
+  
+  formUtils= FormUtils; //
+  formOutput = output<any>();
   myForm = this.fb.group({
     id:[uuidv4()],
     nit:[0,[Validators.required, Validators.min(5)]],
     fullName:['',[Validators.required, Validators.minLength(7)]],
     email:['',[Validators.required, Validators.email]],
-    loans:[0,[Validators.required, Validators.min(10000),Validators.max(100000)]],
+    loans:[0,[Validators.required, Validators.min(10000)]],
     payDate:['']
   })
-  formUtils= FormUtils; //
-  formOutput = output<any>();
 
   onSubmit(){
 
@@ -78,6 +80,25 @@ export class DashboardFormComponent  {
       return true
     }
    return false
+  }
+
+  // detecta los cambios del capital disponble 
+  //EJEMPLO: si en caso dado el capital o fondo es de 999.999 o 87321 
+  // se coloca como rango maximo de valor disponible
+
+  ngOnChanges(changes: SimpleChanges) {
+    if ('capital' in changes) {
+      const cap = changes['capital'].currentValue ?? 0;
+      const maxRanger = cap < 100000 ? cap : 100000;
+
+      const loansControl = this.myForm.get('loans');
+      loansControl?.setValidators([
+        Validators.required,
+        Validators.min(10000),
+        Validators.max(maxRanger),
+      ]);
+      loansControl?.updateValueAndValidity();
+    }
   }
 
   ngOnInit(): void {

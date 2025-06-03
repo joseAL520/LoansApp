@@ -63,22 +63,6 @@
       "email": "valentina.morales@example.com",
       "loans": 100000,
       "payDate": "2025-06-22"
-    },
-    {
-      "id": "1131100ce-f9ae-41df-a371-9364123a6666",
-      "nit": 667788990,
-      "fullName": "Valentina Morales",
-      "email": "valentina.morales@example.com",
-      "loans": 100000,
-      "payDate": "2025-06-22"
-    },
-    {
-      "id": "330c5389-c07e-4af7-8744-a5a5f920e6fe",
-      "nit": 123123123,
-      "fullName": "jose angel",
-      "email": "angel.albigail@gmail.com",
-      "loans": 100000,
-      "payDate": ""
     }
   ],
   "login": {
