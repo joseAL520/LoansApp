@@ -38,7 +38,7 @@
       "id": "52e100ce-f9ae-41df-a371-9364123a0454",
       "email": "admin@gmail.com",
       "password": "123456789",
-      "fullName": "admin",
+      "fullName": "Admin",
       "Wallet": {
         "capital": 1000000,
         "totalLoans": 0
