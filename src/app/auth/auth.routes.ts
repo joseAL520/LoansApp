@@ -3,6 +3,8 @@ import { AuthLayoutsComponent } from "./layouts/auth-layouts/auth-layouts.compon
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 
 export const authRoutes: Routes =[
+    //Manejo de lazyload
+    // angular detecta desde las ruta padre que estos componentes se cargan de foma perezosa
     {
         path:"",
         component:AuthLayoutsComponent,

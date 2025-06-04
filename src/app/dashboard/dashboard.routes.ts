@@ -4,7 +4,8 @@ import { DashboarPageComponent } from './pages/dashboar-page/dashboar-page.compo
 import { LoansPageComponent } from './pages/loans-page/loans-page.component';
 
 export const dashboarRoutes: Routes = [
-
+    //Manejo de lazyload
+    // angular detecta desde las ruta padre que estos componentes se cargan de foma perezosa
     {
         path:'',
         component:  LayoutDasboardComponent,
