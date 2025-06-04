@@ -1,31 +1,34 @@
-# LoansApp
+## 📱 LoansApp 📱
+Este proyecto fue generado con Angular CLI versión 19.2.0.
+---
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+## 🛠️ Instalaciones necesarias🛠️
+  > TailwindCSS + DaisyUI <
+  ```bash
+    npm install daisyui@latest tailwindcss@latest @tailwindcss/postcss@latest postcss@latest --force
+  ```
+  > JSON Server (requiere Node.js v22.14.0) <
+  ```bash
+    npm install json-server
+  ```
+  > UUID <
+  ```bash
+    npm install uuid
+  ```
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-**Instalaciones**
-  ## tailwindcss.com   
-  npm install daisyui@latest tailwindcss@latest @tailwindcss/postcss@latest postcss@latest --force
-  ## json-server - Node.js v22.14.0
-  npm install json-server
-  ##  uuid 11.1.0
-  npm i uuid
-
-
-## ejecutardores
-
+## 🚀 Servidor de desarrollo 🚀
+Para iniciar el servidor local de desarrollo, ejecuta: 
+ ```bash
+  ng serve  o  ng serve -o
   json-server --watch db.json
-  ng-serve -o
-  
-## 
-usuario y contrasena del Login
- >"email": "admin@gmail.com",
- >"password": "123456789",
+```
 
-
+## COPI Y PEGA MAS RAPIDO ##
+```bash
+    npm install daisyui@latest tailwindcss@latest @tailwindcss/postcss@latest postcss@latest
+    --force
+    npm install json-server
+    npm install uuid
+    json-server --watch db.json &
+    ng serve -o
+```
