@@ -1,12 +1,22 @@
 <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-200 m-4 sm:m-6 flex flex-col">
-
-  <input
-    type="text"
-    placeholder="Buscar por Nombre o N. Cedula"
-    class="input input-sm sm:input-md m-2.5 w-full max-w-xs"
-    (keyup)="onSearch($event)"
-  />
-
+  
+  <div class="flex flex-col md:flex-row items-center  gap-2 md:gap-4">
+    <input
+      type="text"
+      placeholder="Buscar... "
+      class="input input-sm md:input-md w-52 md:max-w-xs m-1"
+      (keyup)="onSearch($event)"
+    />
+    <div class="tooltip tooltip-bottom md:self-center" data-tip="Puedes buscar por nombre o número de identificación.">
+      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500" width="20" height="20" viewBox="0 0 16 16">
+        <g fill="currentColor">
+          <path d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0M7.5 4A2.5 2.5 0 0 0 5 6.5h2a.5.5 0 0 1 .5-.5h.646a.382.382 0 0 1 .17.724L7 7.382V9h2v-.382l.211-.106A2.382 2.382 0 0 0 8.146 4z"/>
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+ 
   @if(!clients()?.length){
     <th>
       <div role="alert" class="alert alert-info">

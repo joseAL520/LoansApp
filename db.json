@@ -1,20 +1,36 @@
 {
   "clients": [
     {
-      "id": "d4e5f6a7-2345-6789-abcd-ef1234567890",
-      "nit": 321654987,
-      "fullName": "Laura ferNándEz",
-      "email": "laura.fernandez@yahoo.com",
-      "loans": 100000,
-      "payDate": "2025-07-10"
+      "id": "9f14c3b2-df1a-4cb5-a5e9-dfe38acda5fa",
+      "nit": 1029384756,
+      "fullName": "Lucía Ramírez",
+      "email": "lucia.ramirez@gmail.com",
+      "loans": 87500,
+      "payDate": "2025-06-30"
     },
     {
-      "id": "706c861b-76f8-4718-b6e1-2d9de9681b93",
-      "nit": 123456789,
-      "fullName": "jose angel",
-      "email": "jose.albelt@gmail.com",
-      "loans": 100000,
-      "payDate": "2025-06-25"
+      "id": "3a5276b4-64d7-4df7-b221-bff3561371aa",
+      "nit": 9081726354,
+      "fullName": "Carlos Torres",
+      "email": "carlos_t@hotmail.com",
+      "loans": 26500,
+      "payDate": "2025-07-15"
+    },
+    {
+      "id": "d3e46fc8-55b4-4d4b-90cc-1587b3e28bc3",
+      "nit": 1122334455,
+      "fullName": "Esteban Morales",
+      "email": "esteban.morales@outlook.com",
+      "loans": 43000,
+      "payDate": "2025-07-05"
+    },
+    {
+      "id": "be9a9d5e-3e84-4c7f-9f79-6e0be3c69e6a",
+      "nit": 6677889900,
+      "fullName": "Natalia Sánchez",
+      "email": "natalia.sanchez@protonmail.com",
+      "loans": 99300,
+      "payDate": "2025-07-22"
     }
   ],
   "login": {
@@ -25,7 +41,7 @@
       "fullName": "admin",
       "Wallet": {
         "capital": 1000000,
-        "totalLoans": 128400
+        "totalLoans": 0
       },
       "role": [
         "admin"

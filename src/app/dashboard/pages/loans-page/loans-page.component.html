@@ -1,25 +1,47 @@
-<app-dashboar-cards [capital]="capital()" [loans]="totalLoans()"></app-dashboar-cards> 
+<app-dashboar-cards 
+  [capital]="capital()" 
+  [loans]="totalLoans()">
+</app-dashboar-cards>
 
-<div class="flex flex-col lg:flex-row bg-base-300 m-6 p-4 gap-6 rounded-xl">
+<div class="flex flex-col lg:flex-row bg-base-300 m-6 p-4 gap-6 rounded-xl items-start">
 
-  <div class="w-full lg:w-1/2">
+  <div class="w-full lg:w-1/2 flex flex-col gap-2">
+    <div class="tooltip tooltip-left self-end" data-tip="La aprobación del crédito es aleatoria. Intente nuevamente si no es aprobado.">
+      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500" width="20" height="20" viewBox="0 0 16 16">
+        <g fill="currentColor">
+          <path d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0M7.5 4A2.5 2.5 0 0 0 5 6.5h2a.5.5 0 0 1 .5-.5h.646a.382.382 0 0 1 .17.724L7 7.382V9h2v-.382l.211-.106A2.382 2.382 0 0 0 8.146 4z"/>
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2"/>
+        </g>
+      </svg>
+    </div>
     <app-dashboard-form 
       (formOutput)="postClient($event)" 
-      [deactivateRequestButton]="capital()?false :true"
-      [capital]="capital()"></app-dashboard-form>
+      [deactivateRequestButton]="!capital()" 
+      [capital]="capital()">
+    </app-dashboard-form>
   </div>
 
-  <div class="divider divider-horizontal hidden lg:flex">.</div>
+  <div class="hidden lg:flex h-full">
+    <div class="w-px bg-gray-400 mx-4"></div>
+  </div>
 
-  <div class="w-full lg:w-1/2">
+ <div class="w-full lg:w-1/2 flex flex-col gap-2">
+    <div class="tooltip tooltip-left self-end" data-tip="La tabla muestra los 3 últimos registros agregados recientemente.">
+      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500" width="20" height="20" viewBox="0 0 16 16">
+        <g fill="currentColor">
+          <path d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0M7.5 4A2.5 2.5 0 0 0 5 6.5h2a.5.5 0 0 1 .5-.5h.646a.382.382 0 0 1 .17.724L7 7.382V9h2v-.382l.211-.106A2.382 2.382 0 0 0 8.146 4z"/>
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2"/>
+        </g>
+      </svg>
+    </div>
+
     <app-dashboard-list 
       typeRoute="loans" 
       [clients]="searchedClients ? searchedClients : clientsResource.value()"
       [isLoading]="clientsResource.isLoading()" 
       (searchOutput)="clietnSearchBy($event)"
       (deleteOutput)="clietnDeleteBy($event)">
-
     </app-dashboard-list>
+    
   </div>
-  
 </div>

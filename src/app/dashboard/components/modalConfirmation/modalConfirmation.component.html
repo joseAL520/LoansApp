@@ -76,7 +76,7 @@
       <div role="alert" class="alert alert-info">
         <span>Detalle del cliente</span>    
       </div>
-
+       <div class="divider"></div>
       <div class="grid grid-cols-2 grid-rows-5 gap-4 bg-base-300 p-2.5">
         <div>Numero de Identificación:</div>
         <div class="col-start-2">{{ detalleClient()?.nit | number }}</div>
@@ -84,7 +84,7 @@
         <div class="col-start-2">{{ detalleClient()?.fullName | titlecase }}</div>
         <div>Correo:</div>
         <div class="col-start-2">{{ detalleClient()?.email }}</div>
-        <div>Monto Prestado:</div>
+        <div>Credito:</div>
         <div class="col-start-2">{{ detalleClient()?.loans | currency:'COP':'$':'1.2-2' }}</div>
         <div>Fecha de Pago:</div>
         <div class="col-start-2">{{ detalleClient()?.payDate }}</div>
