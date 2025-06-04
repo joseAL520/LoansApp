@@ -4,7 +4,6 @@ import { DashboardListComponent } from "../../components/dashboard-list/dashboar
 import { DashboardService } from '../../services/dashboard.service';
 import { filter, find, firstValueFrom, map, tap } from 'rxjs';
 import { Client } from '../../interfaces/clients.interfaces';
-import { AdmBankService } from '../../../auth/services/admBank.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +17,7 @@ export class DashboarPageComponent  {
   searchedClients?: Client[]| null = null;
 
   clientService = inject(DashboardService)
-  adminService = inject(AdmBankService)
+
   router = inject(Router)
 
   limit = 7;
@@ -79,7 +78,7 @@ export class DashboarPageComponent  {
   } 
 
   calculateFinancialSummary(){
-    const capital = this.adminService.user()?.Wallet.capital ?? 0;
+    const capital = 1000000;
     this.clientService.getClients().pipe(
       map(clients => 
         clients.reduce((total, client) => total + (client.loans || 0), 0)

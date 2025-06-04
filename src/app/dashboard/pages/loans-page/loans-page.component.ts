@@ -5,7 +5,6 @@ import { DashboardListComponent } from "../../components/dashboard-list/dashboar
 import { firstValueFrom, map } from 'rxjs';
 import { DashboardService } from '../../services/dashboard.service';
 import { Client } from '../../interfaces/clients.interfaces';
-import { AdmBankService } from '../../../auth/services/admBank.service';
 
 @Component({
   selector: 'app-loans-page',
@@ -18,7 +17,6 @@ export class LoansPageComponent {
   searchedClients?: Client[]| null = null;
 
   clientService = inject(DashboardService)
-  adminService = inject(AdmBankService)
 
   
   totalLoans = signal<number| null>(null) 
@@ -75,7 +73,7 @@ export class LoansPageComponent {
   }
 
   calculateFinancialSummary(){
-    const capital = this.adminService.user()?.Wallet.capital ?? 0;
+    const capital = 10000000;
     this.clientService.getClients().pipe(
       map(clients => 
         clients.reduce((total, client) => total + (client.loans || 0), 0)

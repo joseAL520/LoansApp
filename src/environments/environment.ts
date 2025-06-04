@@ -1,4 +1,8 @@
 export const environment = {
-    baseUrlClient: 'http://localhost:3000/clients',
-    baseUrlAdmBank: 'http://localhost:3000/login'
+ api: {
+    clients: 'http://localhost:3000/clients',
+    adminLogin: 'http://localhost:3000/login'
+  },
+
+  BANK_INITIAL_CAPITAL: 1000000
 };
