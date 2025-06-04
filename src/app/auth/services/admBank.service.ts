@@ -38,28 +38,46 @@ export class AdmBankService {
   user =computed(()=> this._user());
   token = computed(this._token);
 
+  //  json-server NO hace validaciones reales ni autenticación segura, solo filtra datos de forma simple
+  // este metodo de auth es con el fin de demostrar las mis habilidades en el manejo de auth y JWT 
+  // 
   login(email:string,password:string):Observable<boolean>{
     return this.http.get<AuthResponse>(`${baseUrl}?email=${email}&password=${password}`).pipe(
-     map(resp => this.handleAuthSuccess(resp)),
+     map(({user,token}) => {
+      //validor temporal 
+        if(user.email === email,user.password === password){
+          this.handleAuthSuccess({token,user})
+          return true
+        }
+        return false
+  }),
     catchError((error: any) => this.handleAuthError(error))
      
     )
   }
 
   checkStatus(): Observable<boolean> {
-    const token = localStorage.getItem('token');
-    if (!token) {
+    const tokenLocal = localStorage.getItem('token');
+    console.log(tokenLocal)
+    if (!tokenLocal) {
       this.router.navigateByUrl('/auth/')
       this.logout();
       return of(false);
     }
     return this.http.get<AuthResponse>(`${baseUrl}`, {
+      //para podr validar el token 
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },
       })
       .pipe(
-        map((resp) => this.handleAuthSuccess(resp)),
+        map(({user,token}) => {
+          if(token===tokenLocal){
+            this.handleAuthSuccess({token,user})
+            return true
+          }
+          return false
+        }),
         catchError((error: any) => this.handleAuthError(error))
       );
  }
