@@ -36,7 +36,7 @@ export class LoansPageComponent {
     loader: async ({ request: offset }) => {
       const clients = await firstValueFrom(
         this.clientService.getClients().pipe(
-          map( clients =>  clients.slice(-3))
+          map( clients =>  clients.slice(1).reverse())
         ),
       );
       this.calculateFinancialSummary()

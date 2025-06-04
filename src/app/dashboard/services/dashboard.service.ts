@@ -30,7 +30,7 @@ export class DashboardService {
         _limit:limit,
         _start:offset
       }
-    })  
+    }).pipe( map(clients => clients.reverse()))  
   }
 
   //Segundo: Por busqueda por ID
