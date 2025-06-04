@@ -5,6 +5,10 @@ import { DashboardListComponent } from "../../components/dashboard-list/dashboar
 import { firstValueFrom, map } from 'rxjs';
 import { DashboardService } from '../../services/dashboard.service';
 import { Client } from '../../interfaces/clients.interfaces';
+import { environment } from '../../../../environments/environment.development';
+
+const bankCapita = environment.BANK_INITIAL_CAPITAL
+
 
 @Component({
   selector: 'app-loans-page',
@@ -73,7 +77,7 @@ export class LoansPageComponent {
   }
 
   calculateFinancialSummary(){
-    const capital = 10000000;
+    const capital = bankCapita;
     this.clientService.getClients().pipe(
       map(clients => 
         clients.reduce((total, client) => total + (client.loans || 0), 0)

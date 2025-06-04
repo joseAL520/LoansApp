@@ -1,14 +1,14 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { User } from '../interfaces/user.interfaces';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth.interfaces';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 type AuthStatus = 'cheking' | 'authenticated' | 'not-authenticated';
-const baseUrl = environment.baseUrlAdmBank
+const baseUrl = environment.api.adminLogin
 
 
 @Injectable({

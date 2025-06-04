@@ -1,4 +1,5 @@
 export const environment = {
+ production: false,
  api: {
     clients: 'http://localhost:3000/clients',
     adminLogin: 'http://localhost:3000/login'

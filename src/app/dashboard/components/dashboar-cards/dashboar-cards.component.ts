@@ -11,7 +11,7 @@ import { CurrencyPipe } from '@angular/common';
 export class DashboarCardsComponent { 
 
 
-  capital = input<number>()
+  capital = input<number|null>()
   loans = input<number | null>()
 
 

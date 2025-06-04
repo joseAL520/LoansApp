@@ -5,6 +5,9 @@ import { DashboardService } from '../../services/dashboard.service';
 import { filter, find, firstValueFrom, map, tap } from 'rxjs';
 import { Client } from '../../interfaces/clients.interfaces';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment.development';
+
+const bankCapita = environment.BANK_INITIAL_CAPITAL
 
 @Component({
   selector: 'app-dashboar-page',
@@ -25,7 +28,7 @@ export class DashboarPageComponent  {
   lastLoadCount = signal(0);
 
   totalLoans = signal<number| null>(null) 
-  capital = signal<number| undefined>(undefined)
+  capital = signal<number| null>(null)
 
   offset = computed(() => this.currentPage() * this.limit); 
   readonly disablePrev = computed(() => this.currentPage() === 0);
@@ -43,7 +46,6 @@ export class DashboarPageComponent  {
       return clients;
     }
   })
-
 
   //getById
  clietnSearchBy(event: any) {
@@ -78,7 +80,7 @@ export class DashboarPageComponent  {
   } 
 
   calculateFinancialSummary(){
-    const capital = 1000000;
+    const capital = bankCapita;
     this.clientService.getClients().pipe(
       map(clients => 
         clients.reduce((total, client) => total + (client.loans || 0), 0)
